@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Test title',
+      home: MyFirstWidget(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +43,20 @@ class MyApp extends StatelessWidget {
 
 class MyFirstWidget extends StatelessWidget {
   int counter = 0;
+  BuildContext _context;
+
+  Type getContext() {
+    return _context.runtimeType;
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Caching the context
+    if (_context == null) {
+      _context = context;
+    }
+    print(getContext());
+
     counter++;
     print('Build counter $counter');
     return Container(child: Center(child: Text('Hello!')));
@@ -48,9 +70,20 @@ class MySecondWidget extends StatefulWidget {
 
 class _MySecondWidgetState extends State<MySecondWidget> {
   int counter = 0;
+  BuildContext _context;
+
+  Type getContext() {
+    return _context.runtimeType;
+  }
 
   @override
   Widget build(BuildContext context) {
+    // Caching the context
+    if (_context == null) {
+      _context = context;
+    }
+    print(getContext());
+
     counter++;
     print('Build counter $counter');
     return Container(child: Center(child: Text('Hello!')));
