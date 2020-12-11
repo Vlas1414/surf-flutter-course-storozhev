@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/utils.dart';
+import 'package:places/strings.dart';
+import 'package:places/styles.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -15,15 +16,10 @@ class _SightListScreenState extends State<SightListScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Список\nинтересных мест',
+          Strings.APP_MAIN_TITLE,
           textAlign: TextAlign.left,
           maxLines: 2,
-          style: TextStyle(
-            color: Utils().convertHexToColor('#3B3E5B'),
-            fontFamily: 'RobotoRegular',
-            fontWeight: FontWeight.bold,
-            fontSize: 32,
-          ),
+          style: Styles.APP_MAIN_TITLE,
         ),
       ),
       backgroundColor: Colors.white,
