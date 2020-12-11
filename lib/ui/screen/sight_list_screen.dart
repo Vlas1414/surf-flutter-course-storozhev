@@ -15,20 +15,24 @@ class _SightListScreenState extends State<SightListScreen> {
         toolbarHeight: 90,
         backgroundColor: Colors.transparent,
         elevation: 0,
-title: RichText(
+        title: RichText(
           text: TextSpan(
             style: Styles.APP_MAIN_TITLE,
             children: [
               TextSpan(
-                  text: 'С',
-                  style:
-                      TextStyle(color: Color.fromARGB(255, 76, 175, 80))),
-              TextSpan(text: 'писок\n'),
+                text: Strings.APP_MAIN_TITLE_FOR_RICH_TEXT_PART1,
+                style: Styles.APP_MAIN_TITLE_SYMBOL1,
+              ),
               TextSpan(
-                  text: 'И',
-                  style:
-                      TextStyle(color: Color.fromARGB(255, 252, 221, 61))),
-              TextSpan(text: 'нтересных мест'),
+                text: Strings.APP_MAIN_TITLE_FOR_RICH_TEXT_PART2,
+              ),
+              TextSpan(
+                text: Strings.APP_MAIN_TITLE_FOR_RICH_TEXT_PART3,
+                style: Styles.APP_MAIN_TITLE_SYMBOL2,
+              ),
+              TextSpan(
+                text: Strings.APP_MAIN_TITLE_FOR_RICH_TEXT_PART4,
+              ),
             ],
           ),
           textAlign: TextAlign.left,
