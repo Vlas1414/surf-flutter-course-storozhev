@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/utils.dart';
+import 'package:places/strings.dart';
+import 'package:places/styles.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -14,25 +15,19 @@ class _SightListScreenState extends State<SightListScreen> {
         toolbarHeight: 90,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: RichText(
+title: RichText(
           text: TextSpan(
-            //Список\nинтересных мест
-            style: TextStyle(
-              color: Utils().convertHexToColor('#3B3E5B'),
-              fontFamily: 'RobotoRegular',
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            ),
+            style: Styles.APP_MAIN_TITLE,
             children: [
               TextSpan(
                   text: 'С',
                   style:
-                      TextStyle(color: Utils().convertHexToColor('#4CAF50'))),
+                      TextStyle(color: Color.fromARGB(255, 76, 175, 80))),
               TextSpan(text: 'писок\n'),
               TextSpan(
                   text: 'И',
                   style:
-                      TextStyle(color: Utils().convertHexToColor('#FCDD3D'))),
+                      TextStyle(color: Color.fromARGB(255, 252, 221, 61))),
               TextSpan(text: 'нтересных мест'),
             ],
           ),
