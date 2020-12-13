@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/domain/sight.dart';
 
 import 'package:places/mocks.dart';
 import 'package:places/strings.dart';
@@ -32,7 +31,11 @@ class _SightListScreenState extends State<SightListScreen> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          children: mocks.map((element) => SightCard(sight: element)).toList(),
+          children: mocks
+              .map(
+                (element) => SightCard(sight: element),
+              )
+              .toList(),
         ),
       ),
     );
