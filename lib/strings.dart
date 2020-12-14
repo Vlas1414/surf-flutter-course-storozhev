@@ -1,12 +1,12 @@
 class Strings {
- static const String appMainTitle = "Список\nИнтересных мест";
+  static const String appMainTitle = "Список\nИнтересных мест";
   //* SCREEN DETAILS
-  static const String DETAILS_TITLE = "Пряности и радости";
-  static const String DETAILS_TYPE_NAME = "Ресторан";
-  static const String DETAILS_SCHEDULE_INFO = "закрыто до 09:00";
-  static const String DETAILS_DESCRIPTION =
+  static const String detailsTitle = "Пряности и радости";
+  static const String detailsTypeName = "Ресторан";
+  static const String detailsScheduleInfo = "закрыто до 09:00";
+  static const String detailsDescription =
       "Пряный вкус радостной жизни вместе с шеф-поваром Изо Дзандзава, благодаря которой у гостей ресторана есть возможность выбирать из двух направлений: европейского и восточного";
-  static const String DETAILS_BUILD_ROUTE_TEXT_BUTTON = "Построить маршрут";
-  static const String DETAILS_PLAN_TEXT_BUTTON = "Запланировать";
-  static const String DETAILS_LIKE_TEXT_BUTTON = "В Избранное";
+  static const String detailsBuildRouteTextButton = "Построить маршрут";
+  static const String detailsPlanTextButton = "Запланировать";
+  static const String detailsLikeTextButton = "В Избранное";
 }

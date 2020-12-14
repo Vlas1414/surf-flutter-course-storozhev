@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:places/customColors.dart';
 import 'package:places/strings.dart';
 import 'package:places/styles.dart';
 
+//Экран отображения подробной информации о посещаемом месте
 class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,11 +17,11 @@ class SightDetails extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 48, left: 16),
+                  margin: const EdgeInsets.only(top: 48, left: 16),
                   width: 32,
                   height: 32,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
@@ -40,42 +42,42 @@ class SightDetails extends StatelessWidget {
           child: Container(
             width: double.infinity,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 16, right: 16, top: 24),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Strings.DETAILS_TITLE,
-                  style: Styles.DETAILS_TITLE,
+                  Strings.detailsTitle,
+                  style: Styles.detailsTitle,
                 ),
-                SizedBox(height: 2),
+                const SizedBox(height: 2),
                 Row(
                   children: [
                     Text(
-                      Strings.DETAILS_TYPE_NAME.toLowerCase(),
-                      style: Styles.DETAILS_TYPE_NAME,
+                      Strings.detailsTypeName.toLowerCase(),
+                      style: Styles.detailsTypeName,
                     ),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     Text(
-                      Strings.DETAILS_SCHEDULE_INFO.toLowerCase(),
-                      style: Styles.DETAILS_SCHEDULE_INFO,
+                      Strings.detailsScheduleInfo.toLowerCase(),
+                      style: Styles.detailsScheduleInfo,
                     ),
                   ],
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Text(
-                  Strings.DETAILS_DESCRIPTION,
-                  style: Styles.DETAILS_DESCRIPTION,
+                  Strings.detailsDescription,
+                  style: Styles.detailsDescription,
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Container(
                   width: double.infinity,
                   height: 48,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
                     ),
-                    color: Color.fromARGB(255, 76, 175, 80),
+                    color: CustomColors.green,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -85,21 +87,21 @@ class SightDetails extends StatelessWidget {
                         width: 20,
                         height: 20,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
-                        Strings.DETAILS_BUILD_ROUTE_TEXT_BUTTON.toUpperCase(),
-                        style: Styles.DETAILS_BUILD_ROUTE_TEXT_BUTTON,
+                        Strings.detailsBuildRouteTextButton.toUpperCase(),
+                        style: Styles.detailsBuildRouteTextButton,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Container(
                   width: double.infinity,
                   height: 1,
-                  color: Color.fromARGB(70, 124, 126, 146),
+                  color: CustomColors.inactiveBlack,
                 ),
-                SizedBox(height: 19),
+                const SizedBox(height: 19),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -108,12 +110,12 @@ class SightDetails extends StatelessWidget {
                         Container(
                           width: 20,
                           height: 20,
-                          color: Color.fromARGB(70, 124, 126, 146),
+                          color: CustomColors.inactiveBlack,
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
-                          Strings.DETAILS_PLAN_TEXT_BUTTON,
-                          style: Styles.DETAILS_PLAN_TEXT_BUTTON,
+                          Strings.detailsPlanTextButton,
+                          style: Styles.detailsPlanTextButton,
                         ),
                       ],
                     ),
@@ -122,12 +124,12 @@ class SightDetails extends StatelessWidget {
                         Container(
                           width: 20,
                           height: 20,
-                          color: Color.fromARGB(255, 59, 62, 91),
+                          color: CustomColors.secondary,
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
-                          Strings.DETAILS_LIKE_TEXT_BUTTON,
-                          style: Styles.DETAILS_LIKE_TEXT_BUTTON,
+                          Strings.detailsLikeTextButton,
+                          style: Styles.detailsLikeTextButton,
                         ),
                       ],
                     ),
