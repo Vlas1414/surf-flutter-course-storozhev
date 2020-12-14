@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:places/customColors.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles.dart';
 
+//виджет места, отображает основные параметры, елемент списка экрана интересных мест
 class SightCard extends StatelessWidget {
+  //объект модели Sight, содержит подробные параметры места
   final Sight sight;
   SightCard({this.sight});
 
@@ -11,8 +14,8 @@ class SightCard extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       height: 188,
-      margin: EdgeInsets.only(bottom: 16, left: 16, right: 16),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(16),
         ),
@@ -22,7 +25,7 @@ class SightCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.grey,
+              color: CustomColors.greyTestColor,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -31,17 +34,18 @@ class SightCard extends StatelessWidget {
                     top: 16,
                     child: Text(
                       sight.type.toLowerCase(),
-                      style: Styles.SIGHT_CARD_TYPE_NAME,
+                      style: Styles.sightCardTypeName,
                     ),
                   ),
                   Positioned(
-                      right: 16,
-                      top: 16,
-                      child: Container(
-                        width: 20,
-                        height: 20,
-                        color: Colors.white,
-                      )),
+                    right: 16,
+                    top: 16,
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      color: CustomColors.white,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -50,23 +54,23 @@ class SightCard extends StatelessWidget {
             flex: 1,
             child: Container(
               width: double.infinity,
-              padding: EdgeInsets.all(16),
-              color: Color.fromARGB(255, 245, 245, 245),
+              padding: const EdgeInsets.all(16),
+              color: CustomColors.background,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(bottom: 5),
                     child: Text(
                       sight.name,
-                      style: Styles.SIGHT_CARD_TITLE,
+                      style: Styles.sightCardTitle,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     sight.details.toLowerCase(),
-                    style: Styles.SIGHT_CARD_SUBTITLE,
+                    style: Styles.sightCardSubtitle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
