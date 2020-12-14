@@ -28,6 +28,6 @@ flutter:
     - assets/fonts/Roboto/
 
   fonts:
-    - family: RobotoRegular
+    - family: RobotoMedium
       fonts:
-        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
