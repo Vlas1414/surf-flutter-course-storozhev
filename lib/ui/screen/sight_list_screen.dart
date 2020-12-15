@@ -16,7 +16,7 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(Strings.appMainTitle),
+      appBar: const CustomAppBar(Strings.appMainTitle),
       backgroundColor: CustomColors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -44,7 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _prefferredHeight,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       alignment: Alignment.bottomLeft,
       child: Text(
         title,
