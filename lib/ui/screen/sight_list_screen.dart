@@ -31,11 +31,12 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
+//кастомная верстка appBar. Заголовок экрана списка интересных мест
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String _title;
   static const double _prefferredHeight = 170;
 
-  const CustomAppBar(this.title);
+  const CustomAppBar(this._title);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.all(16),
       alignment: Alignment.bottomLeft,
       child: Text(
-        title,
+        _title,
         style: Styles.appMainTitle,
         maxLines: 2,
       ),
