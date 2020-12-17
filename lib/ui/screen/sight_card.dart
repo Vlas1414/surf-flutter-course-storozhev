@@ -12,7 +12,7 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3 / 2,
+      aspectRatio: 3.7 / 2,
       child: Container(
         clipBehavior: Clip.antiAlias,
         margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
@@ -61,17 +61,11 @@ class SightCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 5),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 180),
-                      child: Container(
-                        color: CustomColors.greyTestColor,
-                        child: Text(
-                          sight.name,
-                          style: Styles.sightCardTitle,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
+                    Text(
+                      sight.name,
+                      style: Styles.sightCardTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
                     Text(
