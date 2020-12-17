@@ -12,7 +12,7 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3.7 / 2,
+      aspectRatio: 3 / 2,
       child: Container(
         clipBehavior: Clip.antiAlias,
         margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
@@ -26,10 +26,41 @@ class SightCard extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                color: CustomColors.greyTestColor,
                 width: double.infinity,
+                color: CustomColors.greyTestColor,
                 child: Stack(
                   children: [
+                    Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.only(top: 20),
+                      child: Icon(
+                        Icons.insert_photo,
+                        size: 60,
+                        color: CustomColors.background,
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: Image.network(
+                        sight.url,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (
+                          BuildContext context,
+                          Widget child,
+                          ImageChunkEvent loadingProgress,
+                        ) =>
+                            loadingProgress == null
+                                ? child
+                                : Container(
+                                    alignment: Alignment.bottomCenter,
+                                    child: LinearProgressIndicator(
+                                      value: loadingProgress
+                                              .cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes,
+                                    ),
+                                  ),
+                      ),
+                    ),
                     Positioned(
                       left: 16,
                       top: 16,
@@ -41,10 +72,9 @@ class SightCard extends StatelessWidget {
                     Positioned(
                       right: 16,
                       top: 16,
-                      child: Container(
-                        width: 20,
-                        height: 20,
-                        color: CustomColors.white,
+                      child: Image.asset(
+                        'assets/images/HeartIcon.png',
+                        width: 25,
                       ),
                     ),
                   ],
@@ -71,7 +101,7 @@ class SightCard extends StatelessWidget {
                     Text(
                       sight.details.toLowerCase(),
                       style: Styles.sightCardSubtitle,
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
