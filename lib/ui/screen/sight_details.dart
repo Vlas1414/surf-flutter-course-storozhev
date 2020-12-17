@@ -17,6 +17,37 @@ class SightDetails extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: 30),
+                  child: Icon(
+                    Icons.insert_photo,
+                    size: 90,
+                    color: CustomColors.background,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Image.network(
+                    'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg',
+                    fit: BoxFit.cover,
+                    loadingBuilder: (
+                      BuildContext context,
+                      Widget child,
+                      ImageChunkEvent loadingProgress,
+                    ) =>
+                        loadingProgress == null
+                            ? child
+                            : Container(
+                                alignment: Alignment.bottomCenter,
+                                child: LinearProgressIndicator(
+                                  value: loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes,
+                                ),
+                              ),
+                  ),
+                ),
+                Container(
                   margin: const EdgeInsets.only(top: 48, left: 16),
                   width: 32,
                   height: 32,
@@ -27,10 +58,10 @@ class SightDetails extends StatelessWidget {
                       Radius.circular(10),
                     ),
                   ),
-                  child: Container(
-                    color: Colors.black,
-                    width: 15,
-                    height: 15,
+                  child: Image.asset(
+                    'assets/images/ArrowIcon.png',
+                    width: 24,
+                    height: 24,
                   ),
                 ),
               ],
@@ -82,10 +113,10 @@ class SightDetails extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        color: Colors.white,
-                        width: 20,
-                        height: 20,
+                      Image.asset(
+                        'assets/images/GoIcon.png',
+                        width: 25,
+                        height: 25,
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -107,10 +138,10 @@ class SightDetails extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          color: CustomColors.inactiveBlack,
+                        Image.asset(
+                          'assets/images/CalendarIcon.png',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -121,9 +152,10 @@ class SightDetails extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Container(
-                          width: 20,
-                          height: 20,
+                        Image.asset(
+                          'assets/images/HeartIcon.png',
+                          width: 24,
+                          height: 24,
                           color: CustomColors.secondary,
                         ),
                         const SizedBox(width: 10),

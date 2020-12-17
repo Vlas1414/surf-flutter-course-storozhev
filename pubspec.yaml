@@ -26,7 +26,7 @@ flutter:
   assets:
     - res/
     - assets/fonts/Roboto/
-    - assets/images/HeartIcon.png
+    - assets/images/
 
   fonts:
     - family: RobotoMedium
