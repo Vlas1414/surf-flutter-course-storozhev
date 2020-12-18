@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/customColors.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles.dart';
+import 'package:places/ui/image_loading.dart';
 
 //виджет места, отображает основные параметры, елемент списка экрана интересных мест
 class SightCard extends StatelessWidget {
@@ -30,37 +31,7 @@ class SightCard extends StatelessWidget {
                 color: CustomColors.greyTestColor,
                 child: Stack(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(top: 20),
-                      child: Icon(
-                        Icons.insert_photo,
-                        size: 60,
-                        color: CustomColors.background,
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      child: Image.network(
-                        sight.url,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (
-                          BuildContext context,
-                          Widget child,
-                          ImageChunkEvent loadingProgress,
-                        ) =>
-                            loadingProgress == null
-                                ? child
-                                : Container(
-                                    alignment: Alignment.bottomCenter,
-                                    child: LinearProgressIndicator(
-                                      value: loadingProgress
-                                              .cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes,
-                                    ),
-                                  ),
-                      ),
-                    ),
+                    ImageLoading(sight.url),
                     Positioned(
                       left: 16,
                       top: 16,
