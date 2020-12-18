@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/customColors.dart';
 import 'package:places/strings.dart';
 import 'package:places/styles.dart';
+import 'package:places/ui/image_loading.dart';
 
 //Экран отображения подробной информации о посещаемом месте
 class SightDetails extends StatelessWidget {
@@ -17,35 +18,10 @@ class SightDetails extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 30),
-                  child: Icon(
-                    Icons.insert_photo,
-                    size: 90,
-                    color: CustomColors.background,
-                  ),
-                ),
-                Container(
                   width: double.infinity,
                   height: double.infinity,
-                  child: Image.network(
-                    'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg',
-                    fit: BoxFit.cover,
-                    loadingBuilder: (
-                      BuildContext context,
-                      Widget child,
-                      ImageChunkEvent loadingProgress,
-                    ) =>
-                        loadingProgress == null
-                            ? child
-                            : Container(
-                                alignment: Alignment.bottomCenter,
-                                child: LinearProgressIndicator(
-                                  value: loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes,
-                                ),
-                              ),
-                  ),
+                  child: ImageLoading(
+                      'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg'),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 48, left: 16),
