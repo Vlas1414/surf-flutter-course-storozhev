@@ -26,7 +26,8 @@ class Styles {
     fontWeight: FontWeight.bold,
     fontSize: 14,
   );
-  //* SCREEN DETAILS
+
+  /// SCREEN DETAILS
   static const TextStyle detailsTitle = TextStyle(
     color: CustomColors.secondary,
     decoration: TextDecoration.none,

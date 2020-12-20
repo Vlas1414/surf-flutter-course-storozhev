@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/assets.dart';
 import 'package:places/customColors.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles.dart';
@@ -43,7 +44,7 @@ class SightCard extends StatelessWidget {
                       right: 16,
                       top: 16,
                       child: Image.asset(
-                        'assets/images/HeartIcon.png',
+                        Assets.heartIcon,
                         width: 25,
                       ),
                     ),

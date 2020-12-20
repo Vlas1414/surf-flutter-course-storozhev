@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/assets.dart';
 import 'package:places/customColors.dart';
 import 'package:places/strings.dart';
 import 'package:places/styles.dart';
@@ -35,7 +36,7 @@ class SightDetails extends StatelessWidget {
                     ),
                   ),
                   child: Image.asset(
-                    'assets/images/ArrowIcon.png',
+                    Assets.arrowIcon,
                     width: 24,
                     height: 24,
                   ),
@@ -90,7 +91,7 @@ class SightDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/GoIcon.png',
+                        Assets.goIcon,
                         width: 25,
                         height: 25,
                       ),
@@ -115,7 +116,7 @@ class SightDetails extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          'assets/images/CalendarIcon.png',
+                          Assets.calendarIcon,
                           width: 24,
                           height: 24,
                         ),
@@ -129,7 +130,7 @@ class SightDetails extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          'assets/images/HeartIcon.png',
+                          Assets.heartIcon,
                           width: 24,
                           height: 24,
                           color: CustomColors.secondary,
