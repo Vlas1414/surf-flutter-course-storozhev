@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:places/assets.dart';
 import 'package:places/customColors.dart';
 import 'package:places/strings.dart';
 import 'package:places/styles.dart';
+import 'package:places/ui/image_loading.dart';
 
-//Экран отображения подробной информации о посещаемом месте
+/// Экран подробной информации о посещаемом месте
 class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,12 @@ class SightDetails extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: ImageLoading(
+                      'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg'),
+                ),
+                Container(
                   margin: const EdgeInsets.only(top: 48, left: 16),
                   width: 32,
                   height: 32,
@@ -27,10 +35,10 @@ class SightDetails extends StatelessWidget {
                       Radius.circular(10),
                     ),
                   ),
-                  child: Container(
-                    color: Colors.black,
-                    width: 15,
-                    height: 15,
+                  child: Image.asset(
+                    Assets.arrowIcon,
+                    width: 24,
+                    height: 24,
                   ),
                 ),
               ],
@@ -82,10 +90,10 @@ class SightDetails extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        color: Colors.white,
-                        width: 20,
-                        height: 20,
+                      Image.asset(
+                        Assets.goIcon,
+                        width: 25,
+                        height: 25,
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -107,10 +115,10 @@ class SightDetails extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          color: CustomColors.inactiveBlack,
+                        Image.asset(
+                          Assets.calendarIcon,
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -121,9 +129,10 @@ class SightDetails extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Container(
-                          width: 20,
-                          height: 20,
+                        Image.asset(
+                          Assets.heartIcon,
+                          width: 24,
+                          height: 24,
                           color: CustomColors.secondary,
                         ),
                         const SizedBox(width: 10),
