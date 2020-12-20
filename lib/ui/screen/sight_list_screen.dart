@@ -6,7 +6,7 @@ import 'package:places/strings.dart';
 import 'package:places/styles.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
-//экран списка интересных мест
+/// Экран списка интересных мест.
 class SightListScreen extends StatefulWidget {
   @override
   _SightListScreenState createState() => _SightListScreenState();
@@ -31,7 +31,7 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
-//кастомная верстка appBar. Заголовок экрана списка интересных мест
+/// AppBar для экрана списка интересных мест.
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String _title;
   static const double _prefferredHeight = 170;

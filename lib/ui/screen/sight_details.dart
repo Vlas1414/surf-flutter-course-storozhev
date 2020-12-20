@@ -4,7 +4,7 @@ import 'package:places/strings.dart';
 import 'package:places/styles.dart';
 import 'package:places/ui/image_loading.dart';
 
-//Экран отображения подробной информации о посещаемом месте
+/// Экран подробной информации о посещаемом месте
 class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

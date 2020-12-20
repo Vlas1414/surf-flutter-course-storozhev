@@ -4,16 +4,16 @@ import 'package:places/domain/sight.dart';
 import 'package:places/styles.dart';
 import 'package:places/ui/image_loading.dart';
 
-//виджет места, отображает основные параметры, елемент списка экрана интересных мест
+/// Виджет места, елемент списка экрана интересных мест
 class SightCard extends StatelessWidget {
-  //объект модели Sight, содержит подробные параметры места
+  /// Объект содержит подробные параметры места
   final Sight sight;
   SightCard({this.sight});
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3 / 2,
+      aspectRatio: 328 / 188,
       child: Container(
         clipBehavior: Clip.antiAlias,
         margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
@@ -25,7 +25,6 @@ class SightCard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 1,
               child: Container(
                 width: double.infinity,
                 color: CustomColors.greyTestColor,
@@ -53,7 +52,6 @@ class SightCard extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 1,
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
