@@ -1,59 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:places/customColors.dart';
+import 'package:places/constants/colorsConstant.dart';
 
-class Styles {
+class TextStylesConstant {
+  static const TextStyle appdDefaultTitle = TextStyle(
+    color: ColorsConstant.secondary,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+  );
+
+  /// SCREEN SIGHT_LIST
   static const TextStyle appMainTitle = TextStyle(
-    color: CustomColors.secondary,
-    fontFamily: 'RobotoMedium',
+    color: ColorsConstant.secondary,
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
     fontSize: 32,
   );
+
+  /// SCREEN SIGHT_CARDS
   static const TextStyle sightCardTitle = TextStyle(
-    color: CustomColors.secondary,
-    fontFamily: 'RobotoMedium',
+    color: ColorsConstant.secondary,
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.w500,
     fontSize: 16,
   );
   static const TextStyle sightCardSubtitle = TextStyle(
-    color: CustomColors.secondary2,
-    fontFamily: 'RobotoMedium',
+    color: ColorsConstant.secondary2,
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.normal,
     fontSize: 14,
   );
   static const TextStyle sightCardTypeName = TextStyle(
-    color: CustomColors.white,
-    fontFamily: 'RobotoMedium',
+    color: ColorsConstant.white,
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
     fontSize: 14,
   );
 
-  /// SCREEN DETAILS
+  /// SCREEN SIGHT_DETAILS
   static const TextStyle detailsTitle = TextStyle(
-    color: CustomColors.secondary,
+    color: ColorsConstant.secondary,
     decoration: TextDecoration.none,
     fontSize: 24,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
   );
   static const TextStyle detailsTypeName = TextStyle(
-    color: CustomColors.secondary,
+    color: ColorsConstant.secondary,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
   );
   static const TextStyle detailsScheduleInfo = TextStyle(
-    color: CustomColors.secondary2,
+    color: ColorsConstant.secondary2,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.normal,
   );
   static const TextStyle detailsDescription = TextStyle(
-    color: CustomColors.secondary,
+    color: ColorsConstant.secondary,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.normal,
     height: 1.4,
   );
@@ -61,21 +71,37 @@ class Styles {
     color: Colors.white,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
   );
   static const TextStyle detailsPlanTextButton = TextStyle(
-    color: CustomColors.inactiveBlack,
+    color: ColorsConstant.inactiveBlack,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.normal,
   );
   static const TextStyle detailsLikeTextButton = TextStyle(
-    color: CustomColors.secondary,
+    color: ColorsConstant.secondary,
     decoration: TextDecoration.none,
     fontSize: 14,
-    fontFamily: 'RobotoMidle',
+    fontFamily: 'Roboto',
     fontWeight: FontWeight.normal,
+  );
+
+  /// SCREEN VISITING
+  static const TextStyle visitingTabTitle = TextStyle(
+    color: ColorsConstant.white,
+    decoration: TextDecoration.none,
+    fontSize: 16,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle visitingTabEmptyText = TextStyle(
+    color: ColorsConstant.inactiveBlack,
+    decoration: TextDecoration.none,
+    fontSize: 15,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w400,
   );
 }

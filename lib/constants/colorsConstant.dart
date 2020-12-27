@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomColors {
+class ColorsConstant {
   static const Color greyTestColor = Color.fromARGB(255, 196, 196, 196);
   static const Color transparent = Colors.transparent;
   static const Color white = Colors.white;

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:places/assets.dart';
-import 'package:places/customColors.dart';
-import 'package:places/strings.dart';
-import 'package:places/styles.dart';
-import 'package:places/ui/image_loading.dart';
+import 'package:places/constants/assetsConstant.dart';
+import 'package:places/constants/colorsConstant.dart';
+import 'package:places/constants/stringsConstant.dart';
+import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/ui/utils/image_loading.dart';
 
 /// Экран подробной информации о посещаемом месте
-class SightDetails extends StatelessWidget {
+class SightDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +22,8 @@ class SightDetails extends StatelessWidget {
                   width: double.infinity,
                   height: double.infinity,
                   child: ImageLoading(
-                      'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg'),
+                    'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg',
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 48, left: 16),
@@ -31,12 +32,10 @@ class SightDetails extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Image.asset(
-                    Assets.arrowIcon,
+                    AssetsConstant.arrowIcon,
                     width: 24,
                     height: 24,
                   ),
@@ -55,50 +54,49 @@ class SightDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Strings.detailsTitle,
-                  style: Styles.detailsTitle,
+                  StringsConstant.detailsTitle,
+                  style: TextStylesConstant.detailsTitle,
                 ),
                 const SizedBox(height: 2),
                 Row(
                   children: [
                     Text(
-                      Strings.detailsTypeName.toLowerCase(),
-                      style: Styles.detailsTypeName,
+                      StringsConstant.detailsTypeName.toLowerCase(),
+                      style: TextStylesConstant.detailsTypeName,
                     ),
                     const SizedBox(width: 16),
                     Text(
-                      Strings.detailsScheduleInfo.toLowerCase(),
-                      style: Styles.detailsScheduleInfo,
+                      StringsConstant.detailsScheduleInfo.toLowerCase(),
+                      style: TextStylesConstant.detailsScheduleInfo,
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  Strings.detailsDescription,
-                  style: Styles.detailsDescription,
+                  StringsConstant.detailsDescription,
+                  style: TextStylesConstant.detailsDescription,
                 ),
                 const SizedBox(height: 24),
                 Container(
                   width: double.infinity,
                   height: 48,
                   decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    color: CustomColors.green,
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: ColorsConstant.green,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        Assets.goIcon,
+                        AssetsConstant.goIcon,
                         width: 25,
                         height: 25,
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        Strings.detailsBuildRouteTextButton.toUpperCase(),
-                        style: Styles.detailsBuildRouteTextButton,
+                        StringsConstant.detailsBuildRouteTextButton
+                            .toUpperCase(),
+                        style: TextStylesConstant.detailsBuildRouteTextButton,
                       ),
                     ],
                   ),
@@ -107,7 +105,7 @@ class SightDetails extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: 1,
-                  color: CustomColors.inactiveBlack,
+                  color: ColorsConstant.inactiveBlack,
                 ),
                 const SizedBox(height: 19),
                 Row(
@@ -116,29 +114,30 @@ class SightDetails extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          Assets.calendarIcon,
+                          AssetsConstant.calendarIcon,
                           width: 24,
                           height: 24,
+                          color: ColorsConstant.inactiveBlack,
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          Strings.detailsPlanTextButton,
-                          style: Styles.detailsPlanTextButton,
+                          StringsConstant.detailsPlanTextButton,
+                          style: TextStylesConstant.detailsPlanTextButton,
                         ),
                       ],
                     ),
                     Row(
                       children: [
                         Image.asset(
-                          Assets.heartIcon,
+                          AssetsConstant.heartIcon,
                           width: 24,
                           height: 24,
-                          color: CustomColors.secondary,
+                          color: ColorsConstant.secondary,
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          Strings.detailsLikeTextButton,
-                          style: Styles.detailsLikeTextButton,
+                          StringsConstant.detailsLikeTextButton,
+                          style: TextStylesConstant.detailsLikeTextButton,
                         ),
                       ],
                     ),
