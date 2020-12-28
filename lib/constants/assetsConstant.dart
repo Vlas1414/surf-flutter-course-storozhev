@@ -1,3 +1,4 @@
+/// Ссылки на ресурсы приложения places
 class AssetsConstant {
   static const String empty = 'assets/images/Empty.png';
 

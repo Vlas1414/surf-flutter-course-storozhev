@@ -1,3 +1,4 @@
+/// Строки приложения places
 class StringsConstant {
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';

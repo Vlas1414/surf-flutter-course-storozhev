@@ -46,8 +46,8 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(bottom: 5, left: 16, right: 16),
       alignment: Alignment.bottomLeft,
       child: Text(
-        this.title,
-        style: TextStylesConstant.appMainTitle,
+        title,
+        style: TextStylesConstant.size32WeightBoldColorSecondary,
         maxLines: 2,
       ),
     );

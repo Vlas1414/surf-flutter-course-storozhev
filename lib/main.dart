@@ -12,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Places',
-      home: VisitingScreen(),
+      home: SightListScreen(),
     );
   }
 }

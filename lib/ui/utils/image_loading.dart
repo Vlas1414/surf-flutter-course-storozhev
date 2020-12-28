@@ -25,7 +25,7 @@ class ImageLoading extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: Image.network(
-            this.url,
+            url,
             fit: BoxFit.cover,
             loadingBuilder: (
               BuildContext context,

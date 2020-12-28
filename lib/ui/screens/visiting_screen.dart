@@ -94,11 +94,10 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsConstant.visitingTabTitleFuture,
-                        style: TextStylesConstant.visitingTabTitle.copyWith(
-                          color: tabController?.index == 0
-                              ? ColorsConstant.white
-                              : ColorsConstant.inactiveBlack,
-                        ),
+                        style: tabController?.index == 0
+                            ? TextStylesConstant.size16Weight700ColorWhite
+                            : TextStylesConstant
+                                .size16Weight700ColorInactiveBlack,
                       ),
                     ),
                   ),
@@ -106,11 +105,10 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsConstant.visitingTabTitlePast,
-                        style: TextStylesConstant.visitingTabTitle.copyWith(
-                          color: tabController?.index == 1
-                              ? ColorsConstant.white
-                              : ColorsConstant.inactiveBlack,
-                        ),
+                        style: tabController?.index == 1
+                            ? TextStylesConstant.size16Weight700ColorWhite
+                            : TextStylesConstant
+                                .size16Weight700ColorInactiveBlack,
                       ),
                     ),
                   ),

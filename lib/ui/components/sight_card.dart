@@ -13,11 +13,13 @@ import 'package:places/ui/utils/image_loading.dart';
 /// TODO: отображение даты запланированного и посещенного
 /// TODO: обработка нажатий кнопок
 class SightCard extends StatelessWidget {
+  @required
   final Sight sight;
   final List<Widget> actions;
   final Widget content;
 
-  SightCard({this.sight, this.actions, this.content});
+  SightCard({this.sight, this.actions, this.content}) : assert(sight != null);
+
   SightCard.simple(Sight sight)
       : this(
           sight: sight,
@@ -25,6 +27,7 @@ class SightCard extends StatelessWidget {
             Image.asset(AssetsConstant.heartIcon, width: 25),
           ],
         );
+
   SightCard.futureVisite(Sight sight)
       : this(
           sight: sight,
@@ -39,13 +42,12 @@ class SightCard extends StatelessWidget {
           ],
           content: Text(
             StringsConstant.visitingPlanAt + "12 окт. 2020",
-            style: TextStylesConstant.sightCardSubtitle.copyWith(
-              color: ColorsConstant.green,
-            ),
+            style: TextStylesConstant.size14ColorGreen,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
         );
+
   SightCard.pastVisite(Sight sight)
       : this(
           sight: sight,
@@ -56,7 +58,7 @@ class SightCard extends StatelessWidget {
           ],
           content: Text(
             StringsConstant.visitingGoalAchievedAt + "12 окт. 2020",
-            style: TextStylesConstant.sightCardSubtitle,
+            style: TextStylesConstant.size14ColorSecondary2,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -66,7 +68,6 @@ class SightCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
       decoration: const BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
@@ -78,23 +79,25 @@ class SightCard extends StatelessWidget {
             color: ColorsConstant.greyTestColor,
             child: Stack(
               children: [
-                ImageLoading(this.sight?.url),
+                ImageLoading(sight.url),
                 Positioned(
                   left: 16,
                   top: 16,
                   child: Text(
-                    this.sight.type.toLowerCase(),
-                    style: TextStylesConstant.sightCardTypeName,
+                    sight.type.toLowerCase(),
+                    style: TextStylesConstant.size14WeightBoldColorWhite,
                   ),
                 ),
-                Positioned(
-                  right: 16,
-                  top: 16,
-                  child: Row(
-                    children: this.actions,
-                  ),
-                ),
-              ],
+                actions != null
+                    ? Positioned(
+                        right: 16,
+                        top: 16,
+                        child: Row(
+                          children: actions,
+                        ),
+                      )
+                    : null,
+              ].where((child) => child != null).toList(),
             ),
           ),
           Container(
@@ -105,16 +108,16 @@ class SightCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  this.sight?.name,
-                  style: TextStylesConstant.sightCardTitle,
+                  sight.name,
+                  style: TextStylesConstant.size16Weight500ColorSecondary,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                this.content,
+                content,
                 const SizedBox(height: 5),
                 Text(
-                  this.sight?.details?.toLowerCase(),
-                  style: TextStylesConstant.sightCardSubtitle,
+                  sight.details.toLowerCase(),
+                  style: TextStylesConstant.size14ColorSecondary2,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

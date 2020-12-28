@@ -13,20 +13,26 @@ class DefaultListView extends StatelessWidget {
   final String imageSrcEmptyArray;
   final String textEmptyArray;
 
-  DefaultListView(
-      {this.children, this.imageSrcEmptyArray, this.textEmptyArray});
+  DefaultListView({
+    this.children,
+    this.imageSrcEmptyArray,
+    this.textEmptyArray,
+  });
+
   DefaultListView.futureVisite(List<Widget> children)
       : this(
           children: children,
           imageSrcEmptyArray: AssetsConstant.empty,
           textEmptyArray: StringsConstant.visitingTabEmptyTextFuture,
         );
+
   DefaultListView.pastVisite(List<Widget> children)
       : this(
           children: children,
           imageSrcEmptyArray: AssetsConstant.goIcon,
           textEmptyArray: StringsConstant.visitingTabEmptyTextPast,
         );
+
   DefaultListView.simpleList(List<Widget> children)
       : this(
           children: children,
@@ -36,7 +42,7 @@ class DefaultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (this.children.length == 0) {
+    if (children.length == 0) {
       return Container(
         width: double.infinity,
         height: double.infinity,
@@ -53,17 +59,14 @@ class DefaultListView extends StatelessWidget {
             const SizedBox(height: 25),
             Text(
               StringsConstant.visitingTabEmptyText,
-              style: TextStylesConstant.visitingTabEmptyText.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextStylesConstant.size18Weight500ColorInactiveBlack,
             ),
             const SizedBox(height: 15),
             Container(
               width: 190,
               child: Text(
                 textEmptyArray,
-                style: TextStylesConstant.visitingTabEmptyText,
+                style: TextStylesConstant.size15Weight400ColorInactiveBlack,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -78,7 +81,18 @@ class DefaultListView extends StatelessWidget {
       child: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 15),
         child: Column(
-          children: this.children,
+          children: children
+              .map(
+                (element) => Container(
+                  margin: const EdgeInsets.only(
+                    bottom: 16,
+                    left: 16,
+                    right: 16,
+                  ),
+                  child: element,
+                ),
+              )
+              .toList(),
         ),
       ),
     );

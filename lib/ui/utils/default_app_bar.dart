@@ -14,7 +14,7 @@ Widget defaultAppBar({title, bottom}) {
     elevation: 0,
     title: Text(
       title,
-      style: TextStylesConstant.appdDefaultTitle,
+      style: TextStylesConstant.size20Weight500ColorSecondary,
     ),
     bottom: PreferredSize(
       child: Container(

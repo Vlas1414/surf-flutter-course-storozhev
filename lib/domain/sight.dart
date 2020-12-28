@@ -12,5 +12,5 @@ class Sight {
     this.url,
     this.details,
     this.type,
-  });
+  }) : assert(name != null && url != null && details != null && type != null);
 }

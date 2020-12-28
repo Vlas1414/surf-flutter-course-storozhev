@@ -1,107 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/colorsConstant.dart';
 
+/// Стили текста в приложении places
 class TextStylesConstant {
-  static const TextStyle appdDefaultTitle = TextStyle(
-    color: ColorsConstant.secondary,
+  static const TextStyle _base = TextStyle(
     fontFamily: 'Roboto',
-    fontWeight: FontWeight.w500,
-    fontSize: 20,
   );
 
-  /// SCREEN SIGHT_LIST
-  static const TextStyle appMainTitle = TextStyle(
-    color: ColorsConstant.secondary,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
+  /// SIZE
+  static final TextStyle size14 = _base.copyWith(
+    fontSize: 14,
+  );
+  static final TextStyle size15 = _base.copyWith(
+    fontSize: 15,
+  );
+  static final TextStyle size16 = _base.copyWith(
+    fontSize: 16,
+  );
+  static final TextStyle size18 = _base.copyWith(
+    fontSize: 18,
+  );
+  static final TextStyle size20 = _base.copyWith(
+    fontSize: 20,
+  );
+  static final TextStyle size24 = _base.copyWith(
+    fontSize: 24,
+  );
+  static final TextStyle size32 = _base.copyWith(
     fontSize: 32,
   );
 
-  /// SCREEN SIGHT_CARDS
-  static const TextStyle sightCardTitle = TextStyle(
-    color: ColorsConstant.secondary,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w500,
-    fontSize: 16,
-  );
-  static const TextStyle sightCardSubtitle = TextStyle(
-    color: ColorsConstant.secondary2,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.normal,
-    fontSize: 14,
-  );
-  static const TextStyle sightCardTypeName = TextStyle(
-    color: ColorsConstant.white,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
-    fontSize: 14,
-  );
-
-  /// SCREEN SIGHT_DETAILS
-  static const TextStyle detailsTitle = TextStyle(
-    color: ColorsConstant.secondary,
-    decoration: TextDecoration.none,
-    fontSize: 24,
-    fontFamily: 'Roboto',
+  /// WEIGHT
+  static final TextStyle size14WeightBold = size14.copyWith(
     fontWeight: FontWeight.bold,
   );
-  static const TextStyle detailsTypeName = TextStyle(
-    color: ColorsConstant.secondary,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
-  );
-  static const TextStyle detailsScheduleInfo = TextStyle(
-    color: ColorsConstant.secondary2,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.normal,
-  );
-  static const TextStyle detailsDescription = TextStyle(
-    color: ColorsConstant.secondary,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.normal,
-    height: 1.4,
-  );
-  static const TextStyle detailsBuildRouteTextButton = TextStyle(
-    color: Colors.white,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.bold,
-  );
-  static const TextStyle detailsPlanTextButton = TextStyle(
-    color: ColorsConstant.inactiveBlack,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.normal,
-  );
-  static const TextStyle detailsLikeTextButton = TextStyle(
-    color: ColorsConstant.secondary,
-    decoration: TextDecoration.none,
-    fontSize: 14,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.normal,
-  );
-
-  /// SCREEN VISITING
-  static const TextStyle visitingTabTitle = TextStyle(
-    color: ColorsConstant.white,
-    decoration: TextDecoration.none,
-    fontSize: 16,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w700,
-  );
-  static const TextStyle visitingTabEmptyText = TextStyle(
-    color: ColorsConstant.inactiveBlack,
-    decoration: TextDecoration.none,
-    fontSize: 15,
-    fontFamily: 'Roboto',
+  static final TextStyle size15Weight400 = size15.copyWith(
     fontWeight: FontWeight.w400,
   );
+  static final TextStyle size16Weight500 = size16.copyWith(
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle size16Weight700 = size16.copyWith(
+    fontWeight: FontWeight.w700,
+  );
+  static final TextStyle size18Weight500 = size18.copyWith(
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle size20Weight500 = size20.copyWith(
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle size24WeightBold = size24.copyWith(
+    fontWeight: FontWeight.bold,
+  );
+  static final TextStyle size32WeightBold = size32.copyWith(
+    fontWeight: FontWeight.bold,
+  );
+
+  /// COLOR
+  static final TextStyle size14ColorInactiveBlack = size14.copyWith(
+    color: ColorsConstant.inactiveBlack,
+  );
+  static final TextStyle size14ColorSecondary = size14.copyWith(
+    color: ColorsConstant.secondary,
+  );
+  static final TextStyle size14ColorSecondary2 = size14.copyWith(
+    color: ColorsConstant.secondary2,
+  );
+  static final TextStyle size14ColorGreen = size14.copyWith(
+    color: ColorsConstant.green,
+  );
+  static final TextStyle size14WeightBoldColorWhite = size14WeightBold.copyWith(
+    color: ColorsConstant.white,
+  );
+  static final TextStyle size14WeightBoldColorSecondary =
+      size14WeightBold.copyWith(
+    color: ColorsConstant.secondary,
+  );
+  static final TextStyle size15Weight400ColorInactiveBlack =
+      size15Weight400.copyWith(
+    color: ColorsConstant.inactiveBlack,
+  );
+  static final TextStyle size16Weight500ColorSecondary =
+      size16Weight500.copyWith(
+    color: ColorsConstant.secondary,
+  );
+  static final TextStyle size16Weight700ColorWhite = size16Weight700.copyWith(
+    color: ColorsConstant.white,
+  );
+  static final TextStyle size16Weight700ColorInactiveBlack =
+      size16Weight700.copyWith(
+    color: ColorsConstant.inactiveBlack,
+  );
+  static final TextStyle size18Weight500ColorInactiveBlack =
+      size18Weight500.copyWith(
+    color: ColorsConstant.inactiveBlack,
+  );
+  static final TextStyle size20Weight500ColorSecondary =
+      size20Weight500.copyWith(
+    color: ColorsConstant.secondary,
+  );
+  static final TextStyle size24WeightBoldColorSecondary =
+      size24WeightBold.copyWith(
+    color: ColorsConstant.secondary,
+  );
+  static final TextStyle size32WeightBoldColorSecondary =
+      size32WeightBold.copyWith(
+    color: ColorsConstant.secondary,
+  );
+
+  /// HEIGHT
+  static final TextStyle size14ColorSecondaryHeight1_4 =
+      size14ColorSecondary.copyWith(height: 1.4);
 }
