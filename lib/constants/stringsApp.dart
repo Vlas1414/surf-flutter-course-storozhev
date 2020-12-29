@@ -1,5 +1,5 @@
 /// Строки приложения places
-class StringsConstant {
+class StringsApp {
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';
   static const String simpleListEmptyText =

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/constants/stringsConstant.dart';
-import 'package:places/constants/assetsConstant.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/assetsApp.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// Виджет места, елемент списка экрана интересных мест
@@ -24,7 +24,7 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            Image.asset(AssetsConstant.heartIcon, width: 25),
+            Image.asset(AssetsApp.heartIcon, width: 25),
           ],
         );
 
@@ -33,16 +33,16 @@ class SightCard extends StatelessWidget {
           sight: sight,
           actions: [
             Image.asset(
-              AssetsConstant.calendarIcon,
+              AssetsApp.calendarIcon,
               width: 25,
-              color: ColorsConstant.white,
+              color: ColorsApp.white,
             ),
             const SizedBox(width: 15),
-            Image.asset(AssetsConstant.crossIcon, width: 25),
+            Image.asset(AssetsApp.crossIcon, width: 25),
           ],
           content: Text(
-            StringsConstant.visitingPlanAt + "12 окт. 2020",
-            style: TextStylesConstant.size14ColorGreen,
+            StringsApp.visitingPlanAt + "12 окт. 2020",
+            style: TextStylesApp.size14ColorGreen,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -52,13 +52,13 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            Image.asset(AssetsConstant.shareIcon, width: 25),
+            Image.asset(AssetsApp.shareIcon, width: 25),
             const SizedBox(width: 15),
-            Image.asset(AssetsConstant.crossIcon, width: 25),
+            Image.asset(AssetsApp.crossIcon, width: 25),
           ],
           content: Text(
-            StringsConstant.visitingGoalAchievedAt + "12 окт. 2020",
-            style: TextStylesConstant.size14ColorSecondary2,
+            StringsApp.visitingGoalAchievedAt + "12 окт. 2020",
+            style: TextStylesApp.size14ColorSecondary2,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -76,7 +76,7 @@ class SightCard extends StatelessWidget {
           Container(
             height: 100,
             width: double.infinity,
-            color: ColorsConstant.greyTestColor,
+            color: ColorsApp.greyTestColor,
             child: Stack(
               children: [
                 ImageLoading(sight.url),
@@ -85,7 +85,7 @@ class SightCard extends StatelessWidget {
                   top: 16,
                   child: Text(
                     sight.type.toLowerCase(),
-                    style: TextStylesConstant.size14WeightBoldColorWhite,
+                    style: TextStylesApp.size14WeightBoldColorWhite,
                   ),
                 ),
                 actions != null
@@ -103,13 +103,13 @@ class SightCard extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
-            color: ColorsConstant.background,
+            color: ColorsApp.background,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   sight.name,
-                  style: TextStylesConstant.size16Weight500ColorSecondary,
+                  style: TextStylesApp.size16Weight500ColorSecondary,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -117,7 +117,7 @@ class SightCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 Text(
                   sight.details.toLowerCase(),
-                  style: TextStylesConstant.size14ColorSecondary2,
+                  style: TextStylesApp.size14ColorSecondary2,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

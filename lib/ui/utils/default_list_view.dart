@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsConstant.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/stringsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/assetsApp.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 
 /// Макет стандартного отображения списка для большенства экранов приложения
 /// children - список элементов
@@ -22,22 +22,22 @@ class DefaultListView extends StatelessWidget {
   DefaultListView.futureVisite(List<Widget> children)
       : this(
           children: children,
-          imageSrcEmptyArray: AssetsConstant.empty,
-          textEmptyArray: StringsConstant.visitingTabEmptyTextFuture,
+          imageSrcEmptyArray: AssetsApp.empty,
+          textEmptyArray: StringsApp.visitingTabEmptyTextFuture,
         );
 
   DefaultListView.pastVisite(List<Widget> children)
       : this(
           children: children,
-          imageSrcEmptyArray: AssetsConstant.goIcon,
-          textEmptyArray: StringsConstant.visitingTabEmptyTextPast,
+          imageSrcEmptyArray: AssetsApp.goIcon,
+          textEmptyArray: StringsApp.visitingTabEmptyTextPast,
         );
 
   DefaultListView.simpleList(List<Widget> children)
       : this(
           children: children,
-          imageSrcEmptyArray: AssetsConstant.geolocationIcon,
-          textEmptyArray: StringsConstant.simpleListEmptyText,
+          imageSrcEmptyArray: AssetsApp.geolocationIcon,
+          textEmptyArray: StringsApp.simpleListEmptyText,
         );
 
   @override
@@ -46,7 +46,7 @@ class DefaultListView extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: double.infinity,
-        color: ColorsConstant.white,
+        color: ColorsApp.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,19 +54,19 @@ class DefaultListView extends StatelessWidget {
             Image.asset(
               imageSrcEmptyArray,
               width: 65,
-              color: ColorsConstant.inactiveBlack,
+              color: ColorsApp.inactiveBlack,
             ),
             const SizedBox(height: 25),
             Text(
-              StringsConstant.visitingTabEmptyText,
-              style: TextStylesConstant.size18Weight500ColorInactiveBlack,
+              StringsApp.visitingTabEmptyText,
+              style: TextStylesApp.size18Weight500ColorInactiveBlack,
             ),
             const SizedBox(height: 15),
             Container(
               width: 190,
               child: Text(
                 textEmptyArray,
-                style: TextStylesConstant.size15Weight400ColorInactiveBlack,
+                style: TextStylesApp.size15Weight400ColorInactiveBlack,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -76,7 +76,7 @@ class DefaultListView extends StatelessWidget {
     }
 
     return Container(
-      color: ColorsConstant.white,
+      color: ColorsApp.white,
       padding: const EdgeInsets.only(top: 5),
       child: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 15),

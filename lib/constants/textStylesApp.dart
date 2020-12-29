@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/colorsConstant.dart';
+import 'package:places/constants/colorsApp.dart';
 
 /// Стили текста в приложении places
-class TextStylesConstant {
+class TextStylesApp {
   static const TextStyle _base = TextStyle(
     fontFamily: 'Roboto',
   );
@@ -58,54 +58,54 @@ class TextStylesConstant {
 
   /// COLOR
   static final TextStyle size14ColorInactiveBlack = size14.copyWith(
-    color: ColorsConstant.inactiveBlack,
+    color: ColorsApp.inactiveBlack,
   );
   static final TextStyle size14ColorSecondary = size14.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
   static final TextStyle size14ColorSecondary2 = size14.copyWith(
-    color: ColorsConstant.secondary2,
+    color: ColorsApp.secondary2,
   );
   static final TextStyle size14ColorGreen = size14.copyWith(
-    color: ColorsConstant.green,
+    color: ColorsApp.green,
   );
   static final TextStyle size14WeightBoldColorWhite = size14WeightBold.copyWith(
-    color: ColorsConstant.white,
+    color: ColorsApp.white,
   );
   static final TextStyle size14WeightBoldColorSecondary =
       size14WeightBold.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
   static final TextStyle size15Weight400ColorInactiveBlack =
       size15Weight400.copyWith(
-    color: ColorsConstant.inactiveBlack,
+    color: ColorsApp.inactiveBlack,
   );
   static final TextStyle size16Weight500ColorSecondary =
       size16Weight500.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
   static final TextStyle size16Weight700ColorWhite = size16Weight700.copyWith(
-    color: ColorsConstant.white,
+    color: ColorsApp.white,
   );
   static final TextStyle size16Weight700ColorInactiveBlack =
       size16Weight700.copyWith(
-    color: ColorsConstant.inactiveBlack,
+    color: ColorsApp.inactiveBlack,
   );
   static final TextStyle size18Weight500ColorInactiveBlack =
       size18Weight500.copyWith(
-    color: ColorsConstant.inactiveBlack,
+    color: ColorsApp.inactiveBlack,
   );
   static final TextStyle size20Weight500ColorSecondary =
       size20Weight500.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
   static final TextStyle size24WeightBoldColorSecondary =
       size24WeightBold.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
   static final TextStyle size32WeightBoldColorSecondary =
       size32WeightBold.copyWith(
-    color: ColorsConstant.secondary,
+    color: ColorsApp.secondary,
   );
 
   /// HEIGHT

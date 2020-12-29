@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/stringsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/components/sight_card.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
 import 'package:places/ui/utils/default_list_view.dart';
@@ -17,8 +17,8 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const _CustomAppBar(StringsConstant.appMainTitle),
-      backgroundColor: ColorsConstant.white,
+      appBar: const _CustomAppBar(StringsApp.appMainTitle),
+      backgroundColor: ColorsApp.white,
       body: DefaultListView.simpleList(
         mocks
             .map(
@@ -47,7 +47,7 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       alignment: Alignment.bottomLeft,
       child: Text(
         title,
-        style: TextStylesConstant.size32WeightBoldColorSecondary,
+        style: TextStylesApp.size32WeightBoldColorSecondary,
         maxLines: 2,
       ),
     );

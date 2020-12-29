@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 
 /// Макет стандартного AppBar для большенства экранов приложения
 /// title - заголовок
@@ -10,11 +10,11 @@ Widget defaultAppBar({title, bottom}) {
 
   return AppBar(
     centerTitle: true,
-    backgroundColor: ColorsConstant.white,
+    backgroundColor: ColorsApp.white,
     elevation: 0,
     title: Text(
       title,
-      style: TextStylesConstant.size20Weight500ColorSecondary,
+      style: TextStylesApp.size20Weight500ColorSecondary,
     ),
     bottom: PreferredSize(
       child: Container(

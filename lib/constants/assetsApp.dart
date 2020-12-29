@@ -1,5 +1,5 @@
 /// Ссылки на ресурсы приложения places
-class AssetsConstant {
+class AssetsApp {
   static const String empty = 'assets/images/Empty.png';
 
   /// MENU

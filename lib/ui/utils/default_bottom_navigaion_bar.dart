@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsConstant.dart';
-import 'package:places/constants/colorsConstant.dart';
+import 'package:places/constants/assetsApp.dart';
+import 'package:places/constants/colorsApp.dart';
 
 /// Нижняя навигация меню
 Widget defaultBottomNavigationBar() {
   return BottomNavigationBar(
-    backgroundColor: ColorsConstant.white,
-    selectedItemColor: ColorsConstant.secondary,
+    backgroundColor: ColorsApp.white,
+    selectedItemColor: ColorsApp.secondary,
     showSelectedLabels: false,
     showUnselectedLabels: false,
     items: [
       BottomNavigationBarItem(
         label: "",
         icon: Image.asset(
-          AssetsConstant.listIcon,
-          color: ColorsConstant.secondary,
+          AssetsApp.listIcon,
+          color: ColorsApp.secondary,
           width: 25,
         ),
       ),
       BottomNavigationBarItem(
         label: "",
         icon: Image.asset(
-          AssetsConstant.heartFullIcon,
-          color: ColorsConstant.secondary,
+          AssetsApp.heartFullIcon,
+          color: ColorsApp.secondary,
           width: 25,
         ),
       ),

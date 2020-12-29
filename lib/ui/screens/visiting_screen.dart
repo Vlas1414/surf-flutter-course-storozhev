@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/stringsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/components/sight_card.dart';
 import 'package:places/ui/utils/default_app_bar.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
@@ -31,7 +31,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
-        title: StringsConstant.visitingTitle,
+        title: StringsApp.visitingTitle,
         bottom: _CustomTabIndicator(
           tabController: tabController,
         ),
@@ -70,7 +70,7 @@ class _CustomTabIndicator extends StatelessWidget {
         vertical: 6,
       ),
       decoration: BoxDecoration(
-        color: ColorsConstant.background,
+        color: ColorsApp.background,
         borderRadius: const BorderRadius.all(Radius.circular(40)),
       ),
       child: LayoutBuilder(
@@ -84,7 +84,7 @@ class _CustomTabIndicator extends StatelessWidget {
                   height: constraints.maxHeight,
                   decoration: const BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(40)),
-                    color: ColorsConstant.secondary,
+                    color: ColorsApp.secondary,
                   ),
                 ),
               ),
@@ -93,22 +93,20 @@ class _CustomTabIndicator extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Text(
-                        StringsConstant.visitingTabTitleFuture,
+                        StringsApp.visitingTabTitleFuture,
                         style: tabController?.index == 0
-                            ? TextStylesConstant.size16Weight700ColorWhite
-                            : TextStylesConstant
-                                .size16Weight700ColorInactiveBlack,
+                            ? TextStylesApp.size16Weight700ColorWhite
+                            : TextStylesApp.size16Weight700ColorInactiveBlack,
                       ),
                     ),
                   ),
                   Expanded(
                     child: Center(
                       child: Text(
-                        StringsConstant.visitingTabTitlePast,
+                        StringsApp.visitingTabTitlePast,
                         style: tabController?.index == 1
-                            ? TextStylesConstant.size16Weight700ColorWhite
-                            : TextStylesConstant
-                                .size16Weight700ColorInactiveBlack,
+                            ? TextStylesApp.size16Weight700ColorWhite
+                            : TextStylesApp.size16Weight700ColorInactiveBlack,
                       ),
                     ),
                   ),

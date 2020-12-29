@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsConstant.dart';
-import 'package:places/constants/colorsConstant.dart';
+import 'package:places/constants/assetsApp.dart';
+import 'package:places/constants/colorsApp.dart';
 
 /// загрузка изображения с прогрес индикатором
 /// url - ссылка на изображение
@@ -16,8 +16,8 @@ class ImageLoading extends StatelessWidget {
           alignment: Alignment.center,
           padding: const EdgeInsets.only(top: 35, bottom: 10),
           child: Image.asset(
-            AssetsConstant.photoIcon,
-            color: ColorsConstant.background,
+            AssetsApp.photoIcon,
+            color: ColorsApp.background,
             height: 100,
           ),
         ),

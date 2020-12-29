@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsConstant.dart';
-import 'package:places/constants/colorsConstant.dart';
-import 'package:places/constants/stringsConstant.dart';
-import 'package:places/constants/textStylesConstant.dart';
+import 'package:places/constants/assetsApp.dart';
+import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// Экран подробной информации о посещаемом месте
@@ -36,7 +36,7 @@ class SightDetailsScreen extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Image.asset(
-                      AssetsConstant.arrowIcon,
+                      AssetsApp.arrowIcon,
                       width: 24,
                       height: 24,
                     ),
@@ -55,28 +55,27 @@ class SightDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    StringsConstant.detailsTitle,
-                    style: TextStylesConstant.size24WeightBoldColorSecondary,
+                    StringsApp.detailsTitle,
+                    style: TextStylesApp.size24WeightBoldColorSecondary,
                   ),
                   const SizedBox(height: 2),
                   Row(
                     children: [
                       Text(
-                        StringsConstant.detailsTypeName.toLowerCase(),
-                        style:
-                            TextStylesConstant.size14WeightBoldColorSecondary,
+                        StringsApp.detailsTypeName.toLowerCase(),
+                        style: TextStylesApp.size14WeightBoldColorSecondary,
                       ),
                       const SizedBox(width: 16),
                       Text(
-                        StringsConstant.detailsScheduleInfo.toLowerCase(),
-                        style: TextStylesConstant.size14ColorSecondary2,
+                        StringsApp.detailsScheduleInfo.toLowerCase(),
+                        style: TextStylesApp.size14ColorSecondary2,
                       ),
                     ],
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    StringsConstant.detailsDescription,
-                    style: TextStylesConstant.size14ColorSecondaryHeight1_4,
+                    StringsApp.detailsDescription,
+                    style: TextStylesApp.size14ColorSecondaryHeight1_4,
                   ),
                   const SizedBox(height: 24),
                   Container(
@@ -84,21 +83,20 @@ class SightDetailsScreen extends StatelessWidget {
                     height: 48,
                     decoration: const BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: ColorsConstant.green,
+                      color: ColorsApp.green,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          AssetsConstant.goIcon,
+                          AssetsApp.goIcon,
                           width: 25,
                           height: 25,
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          StringsConstant.detailsBuildRouteTextButton
-                              .toUpperCase(),
-                          style: TextStylesConstant.size14WeightBoldColorWhite,
+                          StringsApp.detailsBuildRouteTextButton.toUpperCase(),
+                          style: TextStylesApp.size14WeightBoldColorWhite,
                         ),
                       ],
                     ),
@@ -107,7 +105,7 @@ class SightDetailsScreen extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     height: 1,
-                    color: ColorsConstant.inactiveBlack,
+                    color: ColorsApp.inactiveBlack,
                   ),
                   const SizedBox(height: 19),
                   Row(
@@ -116,30 +114,30 @@ class SightDetailsScreen extends StatelessWidget {
                       Row(
                         children: [
                           Image.asset(
-                            AssetsConstant.calendarIcon,
+                            AssetsApp.calendarIcon,
                             width: 24,
                             height: 24,
-                            color: ColorsConstant.inactiveBlack,
+                            color: ColorsApp.inactiveBlack,
                           ),
                           const SizedBox(width: 10),
                           Text(
-                            StringsConstant.detailsPlanTextButton,
-                            style: TextStylesConstant.size14ColorInactiveBlack,
+                            StringsApp.detailsPlanTextButton,
+                            style: TextStylesApp.size14ColorInactiveBlack,
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Image.asset(
-                            AssetsConstant.heartIcon,
+                            AssetsApp.heartIcon,
                             width: 24,
                             height: 24,
-                            color: ColorsConstant.secondary,
+                            color: ColorsApp.secondary,
                           ),
                           const SizedBox(width: 10),
                           Text(
-                            StringsConstant.detailsLikeTextButton,
-                            style: TextStylesConstant.size14ColorSecondary,
+                            StringsApp.detailsLikeTextButton,
+                            style: TextStylesApp.size14ColorSecondary,
                           ),
                         ],
                       ),
