@@ -14,8 +14,6 @@ dependencies:
 
   cupertino_icons: ^1.0.0
 
-  flutter_svg: ^0.19.2+1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,11 +22,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - res/
     - assets/fonts/Roboto/
     - assets/images/
 
   fonts:
-    - family: RobotoMedium
+    - family: Roboto
       fonts:
+        - asset: assets/fonts/Roboto/Roboto-Black.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
         - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
