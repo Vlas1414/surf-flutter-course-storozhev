@@ -3,9 +3,9 @@ import 'package:places/constants/assetsApp.dart';
 import 'package:places/constants/colorsApp.dart';
 
 /// Нижняя навигация меню
-Widget defaultBottomNavigationBar() {
+Widget defaultBottomNavigationBar(context) {
   return BottomNavigationBar(
-    backgroundColor: ColorsApp.white,
+    backgroundColor: Theme.of(context).backgroundColor,
     selectedItemColor: ColorsApp.secondary,
     showSelectedLabels: false,
     showUnselectedLabels: false,
@@ -14,7 +14,7 @@ Widget defaultBottomNavigationBar() {
         label: "",
         icon: Image.asset(
           AssetsApp.listIcon,
-          color: ColorsApp.secondary,
+          color: Theme.of(context).textTheme.bodyText1.color,
           width: 25,
         ),
       ),
@@ -22,7 +22,7 @@ Widget defaultBottomNavigationBar() {
         label: "",
         icon: Image.asset(
           AssetsApp.heartFullIcon,
-          color: ColorsApp.secondary,
+          color: Theme.of(context).textTheme.bodyText1.color,
           width: 25,
         ),
       ),

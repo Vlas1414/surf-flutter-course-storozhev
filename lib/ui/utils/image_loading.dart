@@ -6,6 +6,7 @@ import 'package:places/constants/colorsApp.dart';
 /// url - ссылка на изображение
 class ImageLoading extends StatelessWidget {
   final String url;
+
   ImageLoading(this.url);
 
   @override
@@ -24,6 +25,7 @@ class ImageLoading extends StatelessWidget {
         Container(
           width: double.infinity,
           height: double.infinity,
+          
           child: Image.network(
             url,
             fit: BoxFit.cover,

@@ -31,14 +31,15 @@ class SightDetailsScreen extends StatelessWidget {
                     width: 32,
                     height: 32,
                     alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).backgroundColor,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Image.asset(
                       AssetsApp.arrowIcon,
                       width: 24,
                       height: 24,
+                      color: Theme.of(context).textTheme.headline1.color,
                     ),
                   ),
                 ],
@@ -49,33 +50,39 @@ class SightDetailsScreen extends StatelessWidget {
             flex: 5,
             child: Container(
               width: double.infinity,
-              color: Colors.white,
               padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     StringsApp.detailsTitle,
-                    style: TextStylesApp.size24WeightBoldColorSecondary,
+                    style: TextStylesApp.size24WeightBold.copyWith(
+                      color: Theme.of(context).textTheme.headline1.color,
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Row(
                     children: [
                       Text(
                         StringsApp.detailsTypeName.toLowerCase(),
-                        style: TextStylesApp.size14WeightBoldColorSecondary,
+                        style: TextStylesApp.size14WeightBold.copyWith(
+                          color: Theme.of(context).textTheme.headline2.color,
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Text(
                         StringsApp.detailsScheduleInfo.toLowerCase(),
-                        style: TextStylesApp.size14ColorSecondary2,
+                        style: TextStylesApp.size14.copyWith(
+                          color: Theme.of(context).textTheme.headline3.color,
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24),
                   Text(
                     StringsApp.detailsDescription,
-                    style: TextStylesApp.size14ColorSecondaryHeight1_4,
+                    style: TextStylesApp.size14Height1_4.copyWith(
+                        color: Theme.of(context).textTheme.headline1.color),
                   ),
                   const SizedBox(height: 24),
                   Container(
@@ -132,12 +139,15 @@ class SightDetailsScreen extends StatelessWidget {
                             AssetsApp.heartIcon,
                             width: 24,
                             height: 24,
-                            color: ColorsApp.secondary,
+                            color: Theme.of(context).textTheme.headline1.color,
                           ),
                           const SizedBox(width: 10),
                           Text(
                             StringsApp.detailsLikeTextButton,
-                            style: TextStylesApp.size14ColorSecondary,
+                            style: TextStylesApp.size14.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.headline1.color,
+                            ),
                           ),
                         ],
                       ),

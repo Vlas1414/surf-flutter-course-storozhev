@@ -72,43 +72,15 @@ class TextStylesApp {
   static final TextStyle size14WeightBoldColorWhite = size14WeightBold.copyWith(
     color: ColorsApp.white,
   );
-  static final TextStyle size14WeightBoldColorSecondary =
-      size14WeightBold.copyWith(
-    color: ColorsApp.secondary,
-  );
   static final TextStyle size15Weight400ColorInactiveBlack =
       size15Weight400.copyWith(
-    color: ColorsApp.inactiveBlack,
-  );
-  static final TextStyle size16Weight500ColorSecondary =
-      size16Weight500.copyWith(
-    color: ColorsApp.secondary,
-  );
-  static final TextStyle size16Weight700ColorWhite = size16Weight700.copyWith(
-    color: ColorsApp.white,
-  );
-  static final TextStyle size16Weight700ColorInactiveBlack =
-      size16Weight700.copyWith(
     color: ColorsApp.inactiveBlack,
   );
   static final TextStyle size18Weight500ColorInactiveBlack =
       size18Weight500.copyWith(
     color: ColorsApp.inactiveBlack,
   );
-  static final TextStyle size20Weight500ColorSecondary =
-      size20Weight500.copyWith(
-    color: ColorsApp.secondary,
-  );
-  static final TextStyle size24WeightBoldColorSecondary =
-      size24WeightBold.copyWith(
-    color: ColorsApp.secondary,
-  );
-  static final TextStyle size32WeightBoldColorSecondary =
-      size32WeightBold.copyWith(
-    color: ColorsApp.secondary,
-  );
 
   /// HEIGHT
-  static final TextStyle size14ColorSecondaryHeight1_4 =
-      size14ColorSecondary.copyWith(height: 1.4);
+  static final TextStyle size14Height1_4 = size14.copyWith(height: 1.4);
 }

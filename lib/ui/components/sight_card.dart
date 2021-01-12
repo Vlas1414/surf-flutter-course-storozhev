@@ -103,13 +103,14 @@ class SightCard extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
-            color: ColorsApp.background,
+            color: Theme.of(context).primaryColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   sight.name,
-                  style: TextStylesApp.size16Weight500ColorSecondary,
+                  style: TextStylesApp.size16Weight500.copyWith(
+                      color: Theme.of(context).textTheme.headline1.color),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
