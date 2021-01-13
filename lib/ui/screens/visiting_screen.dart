@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import 'package:places/constants/colorsApp.dart';
 import 'package:places/constants/stringsApp.dart';
 import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/components/sight_card.dart';
@@ -31,6 +30,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
+        context: context,
         title: StringsApp.visitingTitle,
         bottom: _CustomTabIndicator(
           tabController: tabController,
@@ -45,7 +45,7 @@ class _VisitingScreenState extends State<VisitingScreen>
           DefaultListView.pastVisite([]),
         ],
       ),
-      bottomNavigationBar: defaultBottomNavigationBar(),
+      bottomNavigationBar: defaultBottomNavigationBar(context),
     );
   }
 }
@@ -70,7 +70,7 @@ class _CustomTabIndicator extends StatelessWidget {
         vertical: 6,
       ),
       decoration: BoxDecoration(
-        color: ColorsApp.background,
+        color: Theme.of(context).primaryColor,
         borderRadius: const BorderRadius.all(Radius.circular(40)),
       ),
       child: LayoutBuilder(
@@ -82,9 +82,9 @@ class _CustomTabIndicator extends StatelessWidget {
                 child: Container(
                   width: constraints.maxWidth / 2,
                   height: constraints.maxHeight,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(40)),
-                    color: ColorsApp.secondary,
+                    color: Theme.of(context).selectedRowColor,
                   ),
                 ),
               ),
@@ -95,8 +95,14 @@ class _CustomTabIndicator extends StatelessWidget {
                       child: Text(
                         StringsApp.visitingTabTitleFuture,
                         style: tabController?.index == 0
-                            ? TextStylesApp.size16Weight700ColorWhite
-                            : TextStylesApp.size16Weight700ColorInactiveBlack,
+                            ? TextStylesApp.size16Weight700.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
+                              )
+                            : TextStylesApp.size16Weight700.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.headline4.color,
+                              ),
                       ),
                     ),
                   ),
@@ -105,8 +111,14 @@ class _CustomTabIndicator extends StatelessWidget {
                       child: Text(
                         StringsApp.visitingTabTitlePast,
                         style: tabController?.index == 1
-                            ? TextStylesApp.size16Weight700ColorWhite
-                            : TextStylesApp.size16Weight700ColorInactiveBlack,
+                            ? TextStylesApp.size16Weight700.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
+                              )
+                            : TextStylesApp.size16Weight700.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.headline4.color,
+                              ),
                       ),
                     ),
                   ),

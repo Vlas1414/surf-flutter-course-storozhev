@@ -46,7 +46,6 @@ class DefaultListView extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: double.infinity,
-        color: ColorsApp.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +75,6 @@ class DefaultListView extends StatelessWidget {
     }
 
     return Container(
-      color: ColorsApp.white,
       padding: const EdgeInsets.only(top: 5),
       child: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 15),
