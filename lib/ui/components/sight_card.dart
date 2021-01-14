@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/constants/stringsApp.dart';
@@ -6,16 +7,24 @@ import 'package:places/constants/colorsApp.dart';
 import 'package:places/constants/textStylesApp.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
+/// класс кнопки на карточке
+/// child - виджет кнопки
+/// func - обработка нажатия по кнопке
+class ActionButton {
+  Widget child;
+  Function func;
+  ActionButton({this.child, this.func}) : assert(child != null);
+}
+
 /// Виджет места, елемент списка экрана интересных мест
 /// sight - объект содержит подробные параметры места
 /// actions - кнопки действий
 /// content - дополнительная информация
 /// TODO: отображение даты запланированного и посещенного
-/// TODO: обработка нажатий кнопок
 class SightCard extends StatelessWidget {
   @required
   final Sight sight;
-  final List<Widget> actions;
+  final List<ActionButton> actions;
   final Widget content;
 
   SightCard({this.sight, this.actions, this.content}) : assert(sight != null);
@@ -24,7 +33,10 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            Image.asset(AssetsApp.heartIcon, width: 25),
+            ActionButton(
+              child: Image.asset(AssetsApp.heartIcon, width: 25),
+              func: () => print('Tap heartIcon'),
+            )
           ],
         );
 
@@ -32,13 +44,18 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            Image.asset(
-              AssetsApp.calendarIcon,
-              width: 25,
-              color: ColorsApp.white,
+            ActionButton(
+              child: Image.asset(
+                AssetsApp.calendarIcon,
+                width: 25,
+                color: ColorsApp.white,
+              ),
+              func: () => print('Tap calendarIcon'),
             ),
-            const SizedBox(width: 15),
-            Image.asset(AssetsApp.crossIcon, width: 25),
+            ActionButton(
+              child: Image.asset(AssetsApp.crossIcon, width: 25),
+              func: () => print('Tap crossIcon'),
+            ),
           ],
           content: Text(
             StringsApp.visitingPlanAt + "12 окт. 2020",
@@ -52,9 +69,14 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            Image.asset(AssetsApp.shareIcon, width: 25),
-            const SizedBox(width: 15),
-            Image.asset(AssetsApp.crossIcon, width: 25),
+            ActionButton(
+              child: Image.asset(AssetsApp.shareIcon, width: 25),
+              func: () => print('Tap shareIcon'),
+            ),
+            ActionButton(
+              child: Image.asset(AssetsApp.crossIcon, width: 25),
+              func: () => print('Tap crossIcon 2'),
+            ),
           ],
           content: Text(
             StringsApp.visitingGoalAchievedAt + "12 окт. 2020",
@@ -93,7 +115,16 @@ class SightCard extends StatelessWidget {
                         right: 16,
                         top: 16,
                         child: Row(
-                          children: actions,
+                          children: actions
+                              .map(
+                                (e) => CupertinoButton(
+                                  padding: EdgeInsets.only(left: 15),
+                                  minSize: 0,
+                                  child: e.child,
+                                  onPressed: e.func,
+                                ),
+                              )
+                              .toList(),
                         ),
                       )
                     : null,

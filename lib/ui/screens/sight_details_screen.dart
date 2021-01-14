@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/constants/assetsApp.dart';
 import 'package:places/constants/colorsApp.dart';
@@ -27,19 +28,24 @@ class SightDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 48, left: 16),
-                    width: 32,
-                    height: 32,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Image.asset(
-                      AssetsApp.arrowIcon,
-                      width: 24,
-                      height: 24,
-                      color: Theme.of(context).textTheme.headline1.color,
+                    margin: const EdgeInsets.only(top: 40, left: 10),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(6),
+                        minimumSize: const Size.square(0),
+                        primary: Theme.of(context).textTheme.headline1.color,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Theme.of(context).backgroundColor,
+                      ),
+                      onPressed: () => print('Tap back'),
+                      child: Image.asset(
+                        AssetsApp.arrowIcon,
+                        width: 24,
+                        height: 24,
+                        color: Theme.of(context).textTheme.headline1.color,
+                      ),
                     ),
                   ),
                 ],
@@ -85,12 +91,15 @@ class SightDetailsScreen extends StatelessWidget {
                         color: Theme.of(context).textTheme.headline1.color),
                   ),
                   const SizedBox(height: 24),
-                  Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: const BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: ColorsApp.green,
+                  TextButton(
+                    onPressed: () => print('Tap build map'),
+                    style: TextButton.styleFrom(
+                      primary: Theme.of(context).textTheme.headline1.color,
+                      minimumSize: const Size.fromHeight(48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      backgroundColor: ColorsApp.green,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,38 +127,49 @@ class SightDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            AssetsApp.calendarIcon,
-                            width: 24,
-                            height: 24,
-                            color: ColorsApp.inactiveBlack,
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            StringsApp.detailsPlanTextButton,
-                            style: TextStylesApp.size14ColorInactiveBlack,
-                          ),
-                        ],
+                      CupertinoButton(
+                        minSize: 0,
+                        padding: EdgeInsets.zero,
+                        onPressed: () => print('Tap plan'),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AssetsApp.calendarIcon,
+                              width: 24,
+                              height: 24,
+                              color: ColorsApp.inactiveBlack,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              StringsApp.detailsPlanTextButton,
+                              style: TextStylesApp.size14ColorInactiveBlack,
+                            ),
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AssetsApp.heartIcon,
-                            width: 24,
-                            height: 24,
-                            color: Theme.of(context).textTheme.headline1.color,
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            StringsApp.detailsLikeTextButton,
-                            style: TextStylesApp.size14.copyWith(
+                      CupertinoButton(
+                        minSize: 0,
+                        padding: EdgeInsets.zero,
+                        onPressed: () => print('Tap to favorite'),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AssetsApp.heartIcon,
+                              width: 24,
+                              height: 24,
                               color:
                                   Theme.of(context).textTheme.headline1.color,
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 10),
+                            Text(
+                              StringsApp.detailsLikeTextButton,
+                              style: TextStylesApp.size14.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.headline1.color,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
