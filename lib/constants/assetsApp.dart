@@ -15,4 +15,14 @@ class AssetsApp {
   static const String shareIcon = 'assets/images/ShareIcon.png';
   static const String photoIcon = 'assets/images/PhotoIcon.png';
   static const String geolocationIcon = 'assets/images/GeolocationIcon.png';
+
+  /// FILTER
+  static const String cafeIcon = 'assets/images/CafeIcon.png';
+  static const String hotelIcon = 'assets/images/HotelIcon.png';
+  static const String museumIcon = 'assets/images/MuseumIcon.png';
+  static const String parkIcon = 'assets/images/ParkIcon.png';
+  static const String particularPlaceIcon =
+      'assets/images/ParticularPlaceIcon.png';
+  static const String restaurantIcon = 'assets/images/RestaurantIcon.png';
+  static const String tickChoiceIcon = 'assets/images/TickChoiceIcon.png';
 }

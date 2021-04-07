@@ -29,8 +29,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: defaultAppBar(
-        context: context,
+      appBar: DefaultAppBar(
         title: StringsApp.visitingTitle,
         bottom: _CustomTabIndicator(
           tabController: tabController,
@@ -45,7 +44,7 @@ class _VisitingScreenState extends State<VisitingScreen>
           DefaultListView.pastVisite([]),
         ],
       ),
-      bottomNavigationBar: defaultBottomNavigationBar(context),
+      bottomNavigationBar: DefaultBottomNavigationBar(),
     );
   }
 }

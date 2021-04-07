@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screens/res/themes.dart';
-import 'package:places/ui/screens/sight_details_screen.dart';
-import 'package:places/ui/screens/sight_list_screen.dart';
-import 'package:places/ui/screens/visiting_screen.dart';
+import 'package:places/ui/res/themes.dart';
+import 'package:places/ui/screens/filters_screen.dart';
 
 void main() {
   runApp(App());
@@ -14,15 +12,16 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  var isDarkMode = true;
+  var isDarkMode = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Places',
       theme: isDarkMode ? darkTheme : lightTheme,
-      home: // SightListScreen(),
-          //SightDetailsScreen(),
-          VisitingScreen(),
+      home: FiltersScreen(),
+      //SightDetailsScreen(),
+      //SightDetailsScreen(),
+      //VisitingScreen(),
     );
   }
 }

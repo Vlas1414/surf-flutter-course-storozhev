@@ -7,12 +7,7 @@ import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
 import 'package:places/ui/utils/default_list_view.dart';
 
 /// Экран списка интересных мест.
-class SightListScreen extends StatefulWidget {
-  @override
-  _SightListScreenState createState() => _SightListScreenState();
-}
-
-class _SightListScreenState extends State<SightListScreen> {
+class SightListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +19,7 @@ class _SightListScreenState extends State<SightListScreen> {
             )
             .toList(),
       ),
-      bottomNavigationBar: defaultBottomNavigationBar(context),
+      bottomNavigationBar: DefaultBottomNavigationBar(),
     );
   }
 }

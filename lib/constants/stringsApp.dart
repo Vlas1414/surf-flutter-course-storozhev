@@ -26,4 +26,20 @@ class StringsApp {
       'Отмечайте понравившиеся места и они появятся здесь';
   static const String visitingTabEmptyTextPast =
       'Завершите маршрут, чтобы место попало сюда';
+
+  /// SCREEN FILTER
+  static const String filterClear = 'Очистить';
+  static const String filterDistance = 'Расстояние';
+  static const String filterFrom = 'От';
+  static const String filterTo = 'До';
+  static const String filterKm = 'км';
+  static const String filterCategories = 'Категории';
+  static const String filterShowBtn = 'Показать';
+
+  static const String filterHotel = 'Отель';
+  static const String filterRestaurant = 'Ресторан';
+  static const String filterMuseum = 'Музей';
+  static const String filterPark = 'Парк';
+  static const String filterParticularPlace = 'Особое место';
+  static const String filterCafe = 'Кафе';
 }

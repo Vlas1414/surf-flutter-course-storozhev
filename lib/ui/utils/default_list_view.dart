@@ -58,14 +58,18 @@ class DefaultListView extends StatelessWidget {
             const SizedBox(height: 25),
             Text(
               StringsApp.visitingTabEmptyText,
-              style: TextStylesApp.size18Weight500ColorInactiveBlack,
+              style: TextStylesApp.size18Weight500.copyWith(
+                color: ColorsApp.inactiveBlack,
+              ),
             ),
             const SizedBox(height: 15),
             Container(
               width: 190,
               child: Text(
                 textEmptyArray,
-                style: TextStylesApp.size15Weight400ColorInactiveBlack,
+                style: TextStylesApp.size15Weight400.copyWith(
+                  color: ColorsApp.inactiveBlack,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

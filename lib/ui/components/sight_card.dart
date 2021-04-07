@@ -59,7 +59,9 @@ class SightCard extends StatelessWidget {
           ],
           content: Text(
             StringsApp.visitingPlanAt + "12 окт. 2020",
-            style: TextStylesApp.size14ColorGreen,
+            style: TextStylesApp.size14.copyWith(
+              color: ColorsApp.green,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -80,7 +82,9 @@ class SightCard extends StatelessWidget {
           ],
           content: Text(
             StringsApp.visitingGoalAchievedAt + "12 окт. 2020",
-            style: TextStylesApp.size14ColorSecondary2,
+            style: TextStylesApp.size14.copyWith(
+              color: ColorsApp.secondary2,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -107,7 +111,9 @@ class SightCard extends StatelessWidget {
                   top: 16,
                   child: Text(
                     sight.type.toLowerCase(),
-                    style: TextStylesApp.size14WeightBoldColorWhite,
+                    style: TextStylesApp.size14WeightBold.copyWith(
+                      color: ColorsApp.white,
+                    ),
                   ),
                 ),
                 actions != null
@@ -118,7 +124,7 @@ class SightCard extends StatelessWidget {
                           children: actions
                               .map(
                                 (e) => CupertinoButton(
-                                  padding: EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 15),
                                   minSize: 0,
                                   child: e.child,
                                   onPressed: e.func,
@@ -149,7 +155,9 @@ class SightCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 Text(
                   sight.details.toLowerCase(),
-                  style: TextStylesApp.size14ColorSecondary2,
+                  style: TextStylesApp.size14.copyWith(
+                    color: ColorsApp.secondary2,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
