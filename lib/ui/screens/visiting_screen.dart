@@ -39,7 +39,7 @@ class _VisitingScreenState extends State<VisitingScreen>
         controller: tabController,
         children: [
           DefaultListView.futureVisite([
-            SightCard.futureVisite(mocks[1]),
+            SightCard.futureVisite(mocksSights[1]),
           ]),
           DefaultListView.pastVisite([]),
         ],

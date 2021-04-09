@@ -110,7 +110,7 @@ class SightCard extends StatelessWidget {
                   left: 16,
                   top: 16,
                   child: Text(
-                    sight.type.toLowerCase(),
+                    sight.type.text.toLowerCase(),
                     style: TextStylesApp.size14WeightBold.copyWith(
                       color: ColorsApp.white,
                     ),

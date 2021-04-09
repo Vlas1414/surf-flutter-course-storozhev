@@ -1,61 +1,35 @@
+import 'dart:math' as Math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/constants/assetsApp.dart';
 import 'package:places/constants/colorsApp.dart';
 import 'package:places/constants/stringsApp.dart';
 import 'package:places/constants/textStylesApp.dart';
+import 'package:places/domain/sight.dart';
+import 'package:places/mocks.dart';
+import 'package:places/services/location_service.dart';
 import 'package:places/ui/utils/default_accept_button.dart';
 import 'package:places/ui/utils/default_app_bar.dart';
+import 'package:provider/provider.dart';
 
-/// Элемент категории
-/// text - имя категории
-/// icon - иконка категории
-/// isChecked - выбрана ли категория
-class Category {
-  Category({
-    @required this.text,
-    @required this.icon,
-    this.isChecked = false,
-  });
-
-  final String text;
-  final String icon;
-  bool isChecked;
-}
-
-/// Экран настройки фильтра
-class FiltersScreen extends StatefulWidget {
+/// Экран настроек фильтра
+class FiltersScreen extends StatelessWidget {
   @override
-  _FiltersScreenState createState() => _FiltersScreenState();
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => _CategoryModel()),
+        ChangeNotifierProvider(
+          create: (context) => _RangeModel()..getUserPosition(),
+        ),
+      ],
+      child: _Content(),
+    );
+  }
 }
 
-class _FiltersScreenState extends State<FiltersScreen> {
-  final List<Category> categories = [
-    Category(
-      text: StringsApp.filterHotel,
-      icon: AssetsApp.hotelIcon,
-    ),
-    Category(
-      text: StringsApp.filterRestaurant,
-      icon: AssetsApp.restaurantIcon,
-    ),
-    Category(
-      text: StringsApp.filterParticularPlace,
-      icon: AssetsApp.particularPlaceIcon,
-    ),
-    Category(
-      text: StringsApp.filterPark,
-      icon: AssetsApp.parkIcon,
-    ),
-    Category(
-      text: StringsApp.filterMuseum,
-      icon: AssetsApp.museumIcon,
-    ),
-    Category(
-      text: StringsApp.filterCafe,
-      icon: AssetsApp.cafeIcon,
-    ),
-  ];
+class _Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,26 +47,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ),
         ),
         onTapAction: () {
-          setState(() {
-            categories.asMap().forEach((index, value) {
-              categories[index].isChecked = false;
-            });
-          });
+          Provider.of<_CategoryModel>(context, listen: false).uncheckAllItems();
+          Provider.of<_RangeModel>(context, listen: false).makeDefaultValue();
         },
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            _MyFilter(
-              categories: categories,
-              onCheckItem: (int index) {
-                setState(() {
-                  categories[index].isChecked = !categories[index].isChecked;
-                });
-              },
-            ),
+            _MyFilter(),
             _MyRangeSlider(),
+            const Spacer(),
+            _AcceptButton(),
           ],
         ),
       ),
@@ -101,27 +67,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
 }
 
 class _MyFilter extends StatelessWidget {
-  _MyFilter({
-    @required this.categories,
-    @required this.onCheckItem,
-  });
-
-  final List<Category> categories;
-  final Function(int) onCheckItem;
-
   @override
   Widget build(BuildContext context) {
-    final List<Widget> categoriesToShow = [];
-    categories.asMap().forEach(
-          (index, value) => categoriesToShow.add(
-            _FilterItem(
-              text: categories[index].text,
-              iconName: categories[index].icon,
-              isChecked: categories[index].isChecked,
-              onTap: () => onCheckItem(index),
-            ),
-          ),
-        );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -132,14 +79,26 @@ class _MyFilter extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 20, bottom: 25),
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 15,
-            children: categoriesToShow,
-          ),
-        ),
+            padding: const EdgeInsets.only(top: 20, bottom: 25),
+            child: Consumer<_CategoryModel>(
+              builder: (context, categoryModel, child) {
+                return GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 15,
+                  children: categoryModel.categories
+                      .map(
+                        (e) => _FilterItem(
+                          text: e.text,
+                          iconName: e.icon,
+                          isChecked: e.isChecked,
+                          onTap: () => categoryModel.onCheckItem(e),
+                        ),
+                      )
+                      .toList(),
+                );
+              },
+            )),
       ],
     );
   }
@@ -210,68 +169,259 @@ class _FilterItem extends StatelessWidget {
   }
 }
 
-class _MyRangeSlider extends StatefulWidget {
-  @override
-  _MyRangeSliderState createState() => _MyRangeSliderState();
-}
-
-class _MyRangeSliderState extends State<_MyRangeSlider> {
-  RangeValues _rangeValues = RangeValues(100, 5000);
+class _MyRangeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
+    return Consumer<_RangeModel>(
+      builder: (context, rangeModel, child) {
+        if (rangeModel.loadingLocationStatus) {
+          return Center(
+            child: Container(
+              width: 25,
+              height: 25,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(ColorsApp.green),
+              ),
+            ),
+          );
+        }
+        if (!rangeModel.visibilityStatus) {
+          return Center(
+              child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    StringsApp.filterDistance,
-                    style: TextStylesApp.size16.copyWith(
-                      color: Theme.of(context).textTheme.bodyText1.color,
-                    ),
-                  ),
-                  Text(
-                    "${StringsApp.filterFrom} ${_rangeValues.start ~/ 1000} ${StringsApp.filterTo.toLowerCase()} ${_rangeValues.end ~/ 1000} ${StringsApp.filterKm}",
-                    style: TextStylesApp.size16.copyWith(
-                      color: ColorsApp.secondary2,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              SliderTheme(
-                data: SliderThemeData(
-                  trackHeight: 2,
-                  thumbColor: ColorsApp.white,
-                  activeTrackColor: ColorsApp.green,
-                  overlayShape:
-                      const RoundSliderOverlayShape(overlayRadius: 0.0),
+              Text(
+                StringsApp.filterErrorLocation,
+                style: TextStylesApp.size14.copyWith(
+                  color: ColorsApp.greyTestColor,
                 ),
-                child: RangeSlider(
-                  inactiveColor: ColorsApp.inactiveBlack,
-                  values: _rangeValues,
-                  min: 100.0,
-                  max: 10000.0,
-                  onChanged: (RangeValues newValues) {
-                    setState(() {
-                      _rangeValues = newValues;
-                    });
-                  },
+              ),
+              CupertinoButton(
+                onPressed: () => rangeModel.getUserPosition(callByButton: true),
+                child: Text(
+                  StringsApp.repeat,
+                  style: TextStylesApp.size18.copyWith(
+                    color: ColorsApp.green,
+                  ),
                 ),
               ),
             ],
-          ),
-          DefaultAcceptButton(
-            text: StringsApp.filterShowBtn + ' (190)',
-          ),
-        ],
-      ),
+          ));
+        }
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  StringsApp.filterDistance,
+                  style: TextStylesApp.size16.copyWith(
+                    color: Theme.of(context).textTheme.bodyText1.color,
+                  ),
+                ),
+                Text(
+                  "${StringsApp.filterFrom} ${rangeModel.rangeValues.start ~/ 1000} ${StringsApp.filterTo.toLowerCase()} ${rangeModel.rangeValues.end ~/ 1000} ${StringsApp.filterKm}",
+                  style: TextStylesApp.size16.copyWith(
+                    color: ColorsApp.secondary2,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+            SliderTheme(
+              data: const SliderThemeData(
+                trackHeight: 2,
+                thumbColor: ColorsApp.white,
+                activeTrackColor: ColorsApp.green,
+                overlayShape: RoundSliderOverlayShape(overlayRadius: 0.0),
+              ),
+              child: RangeSlider(
+                inactiveColor: ColorsApp.inactiveBlack,
+                values: rangeModel.rangeValues,
+                min: rangeModel.min,
+                max: rangeModel.max,
+                onChanged: rangeModel.updateRangeValues,
+              ),
+            ),
+          ],
+        );
+      },
     );
+  }
+}
+
+class _AcceptButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final rangeFoundSights = Provider.of<_RangeModel>(context).foundSights();
+    final categoryFoundSights =
+        Provider.of<_CategoryModel>(context).foundSights();
+    final foundSights = mocksSights.where(
+      (sight) =>
+          rangeFoundSights.any((element) => sight.name == element.name) &&
+          categoryFoundSights.any((element) => sight.name == element.name),
+    );
+    return DefaultAcceptButton(
+      text: StringsApp.filterShowBtn + ' (${foundSights.length})',
+    );
+  }
+}
+
+class _RangeModel extends ChangeNotifier {
+  RangeValues _rangeValues;
+  double _userPositionLat;
+  double _userPositionLon;
+  bool _visibilityStatus = false;
+  bool _loadingLocationStatus = true;
+
+  static const _defaultRangeValues = RangeValues(100, 5000);
+  static const double _min = 100.0;
+  static const double _max = 10000.0;
+
+  /// Если местоположение определено, показываем ui виджета расстояния
+  bool get visibilityStatus => _visibilityStatus;
+
+  /// Идет ли ожидание получения местоположения
+  bool get loadingLocationStatus => _loadingLocationStatus;
+
+  /// Радиус поиска
+  RangeValues get rangeValues => _rangeValues ?? _defaultRangeValues;
+
+  /// Минимальное значение радиуса
+  double get min => _min;
+
+  /// Максимальное значение радиуса
+  double get max => _max;
+
+  /// Обновить значение радиуса поиска
+  void updateRangeValues(RangeValues newValue) {
+    if (newValue.start >= _min && newValue.end <= max) {
+      _rangeValues = newValue;
+      notifyListeners();
+    }
+  }
+
+  /// Сбросить значение филтра по радиусу
+  void makeDefaultValue() {
+    updateRangeValues(_defaultRangeValues);
+    notifyListeners();
+  }
+
+  /// Определение местоположения пользователя
+  /// callByButton - выполнить действия если метод был вызван нажатием кнопки
+  Future<void> getUserPosition({bool callByButton}) async {
+    try {
+      _loadingLocationStatus = true;
+      notifyListeners();
+      final geoResult = await LocationService().determinePosition(
+        openSettingsAfterError: callByButton,
+      );
+      _userPositionLat = geoResult.latitude;
+      _userPositionLon = geoResult.longitude;
+    } catch (e) {
+      print('Error get location: $e');
+    } finally {
+      if (_userPositionLat != null && _userPositionLon != null) {
+        _visibilityStatus = true;
+      }
+      _loadingLocationStatus = false;
+      notifyListeners();
+    }
+  }
+
+  bool _arePointsNear(
+    double checkLat,
+    double checkLon,
+    double centerLat,
+    double centerLon,
+    double m,
+  ) {
+    var ky = 40000 / 360;
+    var kx = Math.cos(Math.pi * centerLat / 180.0) * ky;
+    var dx = (centerLon - checkLon).abs() * kx;
+    var dy = (centerLat - checkLat).abs() * ky;
+    return Math.sqrt(dx * dx + dy * dy) <= m / 1000;
+  }
+
+  /// Поиск совпадающих мест
+  List<Sight> foundSights() {
+    if (!_visibilityStatus) {
+      return mocksSights;
+    }
+    return mocksSights
+        .where(
+          (e) =>
+              !_arePointsNear(
+                48.492321,
+                34.959163,
+                _userPositionLat,
+                _userPositionLon,
+                rangeValues.start,
+              ) &&
+              _arePointsNear(
+                48.492321,
+                34.959163,
+                _userPositionLat,
+                _userPositionLon,
+                rangeValues.end,
+              ),
+        )
+        .toList();
+  }
+}
+
+class _CategoryModel extends ChangeNotifier {
+  final List<_Category> _categories =
+      mocksTypeOfSight.map((e) => _Category(e)).toList();
+
+  /// Категории фильтра
+  List<_Category> get categories => _categories;
+
+  /// Пометить выбранный элемент
+  void onCheckItem(_Category category) {
+    category.checkOpposite();
+    notifyListeners();
+  }
+
+  /// Очистить выбранные категории
+  void uncheckAllItems() {
+    _categories.forEach((e) {
+      e.uncheck();
+    });
+    notifyListeners();
+  }
+
+  /// Поиск совпадающих мест
+  List<Sight> foundSights() {
+    return mocksSights
+        .where(
+          (sight) => _categories.any(
+            (element) => element.isChecked && sight.type.text == element.text,
+          ),
+        )
+        .toList();
+  }
+}
+
+class _Category extends TypeOfSight {
+  _Category(
+    TypeOfSight typeOfSight,
+  ) : super(
+          icon: typeOfSight.icon,
+          text: typeOfSight.text,
+        );
+
+  /// Выбрана ли категория
+  bool get isChecked => _isChecked;
+  bool _isChecked = false;
+
+  void checkOpposite() {
+    _isChecked = !isChecked;
+  }
+
+  void uncheck() {
+    _isChecked = false;
   }
 }

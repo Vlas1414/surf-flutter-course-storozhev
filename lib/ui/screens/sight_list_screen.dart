@@ -13,7 +13,7 @@ class SightListScreen extends StatelessWidget {
     return Scaffold(
       appBar: const _CustomAppBar(StringsApp.appMainTitle),
       body: DefaultListView.simpleList(
-        mocks
+        mocksSights
             .map(
               (element) => SightCard.simple(element),
             )

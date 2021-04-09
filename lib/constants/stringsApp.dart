@@ -1,5 +1,7 @@
 /// Строки приложения places
 class StringsApp {
+  static const String repeat = 'Повторить';
+
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';
   static const String simpleListEmptyText =
@@ -30,6 +32,7 @@ class StringsApp {
   /// SCREEN FILTER
   static const String filterClear = 'Очистить';
   static const String filterDistance = 'Расстояние';
+  static const String filterErrorLocation = 'Не удалось определить расстояние';
   static const String filterFrom = 'От';
   static const String filterTo = 'До';
   static const String filterKm = 'км';
