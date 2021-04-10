@@ -23,7 +23,15 @@ class DefaultBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           label: "",
           icon: Image.asset(
-            AssetsApp.heartFullIcon,
+            AssetsApp.heartIcon,
+            color: Theme.of(context).textTheme.bodyText1.color,
+            width: 25,
+          ),
+        ),
+        BottomNavigationBarItem(
+          label: "",
+          icon: Image.asset(
+            AssetsApp.settingsFullIcon,
             color: Theme.of(context).textTheme.bodyText1.color,
             width: 25,
           ),

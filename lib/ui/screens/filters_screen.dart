@@ -7,6 +7,7 @@ import 'package:places/constants/colorsApp.dart';
 import 'package:places/constants/stringsApp.dart';
 import 'package:places/constants/textStylesApp.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/main.dart';
 import 'package:places/mocks.dart';
 import 'package:places/services/location_service.dart';
 import 'package:places/ui/utils/default_accept_button.dart';
@@ -147,7 +148,9 @@ class _FilterItem extends StatelessWidget {
                       right: 0,
                       bottom: -4,
                       child: Image.asset(
-                        AssetsApp.tickChoiceIcon,
+                        Provider.of<ThemeModel>(context).isDarkMode
+                            ? AssetsApp.tickChoiceWhiteIcon
+                            : AssetsApp.tickChoiceIcon,
                         width: 24,
                       ),
                     )
@@ -161,7 +164,7 @@ class _FilterItem extends StatelessWidget {
         Text(
           text,
           style: TextStylesApp.size14.copyWith(
-            color: ColorsApp.secondary,
+            color: Theme.of(context).textTheme.headline1.color,
           ),
         ),
       ],

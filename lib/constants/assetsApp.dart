@@ -25,4 +25,11 @@ class AssetsApp {
       'assets/images/ParticularPlaceIcon.png';
   static const String restaurantIcon = 'assets/images/RestaurantIcon.png';
   static const String tickChoiceIcon = 'assets/images/TickChoiceIcon.png';
+  static const String tickChoiceWhiteIcon =
+      'assets/images/TickChoiceWhiteIcon.png';
+
+  /// SETTINGS
+  static const String infoIcon = 'assets/images/InfoIcon.png';
+  static const String settingsFullIcon = 'assets/images/SettingsFullIcon.png';
+  static const String settingsIcon = 'assets/images/SettingsIcon.png';
 }

@@ -45,4 +45,9 @@ class StringsApp {
   static const String filterPark = 'Парк';
   static const String filterParticularPlace = 'Особое место';
   static const String filterCafe = 'Кафе';
+
+  /// SCREEN SETTINGS
+  static const String settingsTitle = 'Настройки';
+  static const String settingsDarkThemeName = 'Тёмная тема';
+  static const String settingsWhatchTutorial = 'Смотреть туториал';
 }

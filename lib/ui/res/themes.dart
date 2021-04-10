@@ -3,6 +3,7 @@ import 'package:places/constants/colorsApp.dart';
 
 /// светлая тема для приложения
 final lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(brightness: Brightness.dark),
   backgroundColor: ColorsApp.white,
   scaffoldBackgroundColor: ColorsApp.white,
   primaryColor: ColorsApp.background,
@@ -29,6 +30,7 @@ final lightTheme = ThemeData(
 
 /// темная тема для приложения
 final darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(brightness: Brightness.dark),
   backgroundColor: ColorsApp.dmMain,
   scaffoldBackgroundColor: ColorsApp.dmMain,
   primaryColor: ColorsApp.dark,
