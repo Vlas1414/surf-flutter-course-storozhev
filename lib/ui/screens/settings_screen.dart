@@ -9,6 +9,7 @@ import 'package:places/ui/utils/default_app_bar.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
 import 'package:provider/provider.dart';
 
+/// Экран настроек приложения
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
