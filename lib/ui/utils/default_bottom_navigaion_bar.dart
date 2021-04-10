@@ -16,7 +16,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
           label: "",
           icon: Image.asset(
             AssetsApp.listIcon,
-            color: Theme.of(context).textTheme.bodyText1.color,
+            color: Theme.of(context).textTheme.bodyText1!.color,
             width: 25,
           ),
         ),
@@ -24,7 +24,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
           label: "",
           icon: Image.asset(
             AssetsApp.heartIcon,
-            color: Theme.of(context).textTheme.bodyText1.color,
+            color: Theme.of(context).textTheme.bodyText1!.color,
             width: 25,
           ),
         ),
@@ -32,7 +32,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
           label: "",
           icon: Image.asset(
             AssetsApp.settingsFullIcon,
-            color: Theme.of(context).textTheme.bodyText1.color,
+            color: Theme.of(context).textTheme.bodyText1!.color,
             width: 25,
           ),
         ),

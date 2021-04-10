@@ -1,11 +1,11 @@
 class Sight {
   Sight({
-    this.name,
+    required this.name,
     this.lat,
     this.lon,
-    this.url,
-    this.details,
-    this.type,
+    required this.url,
+    required this.details,
+    required this.type,
   })  : assert(
           name != null,
           '`name` must not be null',
@@ -23,8 +23,8 @@ class Sight {
           '`type` must not be null',
         );
   final String name;
-  final double lat;
-  final double lon;
+  final double? lat;
+  final double? lon;
   final String url;
   final String details;
   final TypeOfSight type;
@@ -32,8 +32,8 @@ class Sight {
 
 class TypeOfSight {
   TypeOfSight({
-    this.text,
-    this.icon,
+    required this.text,
+    required this.icon,
   })  : assert(
           text != null,
           '`text` must not be null',

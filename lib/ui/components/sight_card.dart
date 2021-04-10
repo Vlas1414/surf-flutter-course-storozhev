@@ -12,8 +12,8 @@ import 'package:places/ui/utils/image_loading.dart';
 /// func - обработка нажатия по кнопке
 class ActionButton {
   Widget child;
-  Function func;
-  ActionButton({this.child, this.func}) : assert(child != null);
+  Function? func;
+  ActionButton({required this.child, this.func}) : assert(child != null);
 }
 
 /// Виджет места, елемент списка экрана интересных мест
@@ -24,10 +24,10 @@ class ActionButton {
 class SightCard extends StatelessWidget {
   @required
   final Sight sight;
-  final List<ActionButton> actions;
-  final Widget content;
+  final List<ActionButton>? actions;
+  final Widget? content;
 
-  SightCard({this.sight, this.actions, this.content}) : assert(sight != null);
+  SightCard({required this.sight, this.actions, this.content}) : assert(sight != null);
 
   SightCard.simple(Sight sight)
       : this(
@@ -117,11 +117,11 @@ class SightCard extends StatelessWidget {
                     Text(
                       sight.name,
                       style: TextStylesApp.size16Weight500.copyWith(
-                          color: Theme.of(context).textTheme.headline1.color),
+                          color: Theme.of(context).textTheme.headline1!.color),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    if (content != null) content,
+                    if (content != null) content!,
                     const SizedBox(height: 5),
                     Text(
                       sight.details.toLowerCase(),
@@ -162,13 +162,13 @@ class SightCard extends StatelessWidget {
               right: 0,
               top: 0,
               child: Row(
-                children: actions
+                children: actions!
                     .map(
                       (e) => CupertinoButton(
                         padding: const EdgeInsets.all(16.0),
                         minSize: 0,
                         child: e.child,
-                        onPressed: e.func,
+                        onPressed: e.func as void Function()?,
                       ),
                     )
                     .toList(),

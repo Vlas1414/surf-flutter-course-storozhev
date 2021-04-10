@@ -34,7 +34,7 @@ class SightDetailsScreen extends StatelessWidget {
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.all(6),
                         minimumSize: const Size.square(0),
-                        primary: Theme.of(context).textTheme.headline1.color,
+                        primary: Theme.of(context).textTheme.headline1!.color,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -45,7 +45,7 @@ class SightDetailsScreen extends StatelessWidget {
                         AssetsApp.arrowIcon,
                         width: 24,
                         height: 24,
-                        color: Theme.of(context).textTheme.headline1.color,
+                        color: Theme.of(context).textTheme.headline1!.color,
                       ),
                     ),
                   ),
@@ -64,7 +64,7 @@ class SightDetailsScreen extends StatelessWidget {
                   Text(
                     StringsApp.detailsTitle,
                     style: TextStylesApp.size24WeightBold.copyWith(
-                      color: Theme.of(context).textTheme.headline1.color,
+                      color: Theme.of(context).textTheme.headline1!.color,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -73,14 +73,14 @@ class SightDetailsScreen extends StatelessWidget {
                       Text(
                         StringsApp.detailsTypeName.toLowerCase(),
                         style: TextStylesApp.size14WeightBold.copyWith(
-                          color: Theme.of(context).textTheme.headline2.color,
+                          color: Theme.of(context).textTheme.headline2!.color,
                         ),
                       ),
                       const SizedBox(width: 16),
                       Text(
                         StringsApp.detailsScheduleInfo.toLowerCase(),
                         style: TextStylesApp.size14.copyWith(
-                          color: Theme.of(context).textTheme.headline3.color,
+                          color: Theme.of(context).textTheme.headline3!.color,
                         ),
                       ),
                     ],
@@ -89,7 +89,7 @@ class SightDetailsScreen extends StatelessWidget {
                   Text(
                     StringsApp.detailsDescription,
                     style: TextStylesApp.size14Height1_4.copyWith(
-                        color: Theme.of(context).textTheme.headline1.color),
+                        color: Theme.of(context).textTheme.headline1!.color),
                   ),
                   const SizedBox(height: 24),
                   DefaultAcceptButton(
@@ -139,14 +139,14 @@ class SightDetailsScreen extends StatelessWidget {
                               width: 24,
                               height: 24,
                               color:
-                                  Theme.of(context).textTheme.headline1.color,
+                                  Theme.of(context).textTheme.headline1!.color,
                             ),
                             const SizedBox(width: 10),
                             Text(
                               StringsApp.detailsLikeTextButton,
                               style: TextStylesApp.size14.copyWith(
                                 color:
-                                    Theme.of(context).textTheme.headline1.color,
+                                    Theme.of(context).textTheme.headline1!.color,
                               ),
                             ),
                           ],

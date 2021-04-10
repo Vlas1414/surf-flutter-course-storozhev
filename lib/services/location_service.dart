@@ -6,7 +6,7 @@ class LocationService {
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<Position> determinePosition({bool openSettingsAfterError}) async {
+  Future<Position> determinePosition({bool? openSettingsAfterError}) async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -25,7 +25,7 @@ class LocationService {
         // Android's shouldShowRequestPermissionRationale
         // returned true. According to Android guidelines
         // your App should show an explanatory UI now.
-        if (openSettingsAfterError) {
+        if (openSettingsAfterError!) {
           await Geolocator.openAppSettings();
         }
         return Future.error('Location permissions are denied');
@@ -38,7 +38,7 @@ class LocationService {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      if (openSettingsAfterError) {
+      if (openSettingsAfterError!) {
         await Geolocator.openLocationSettings();
       }
       return Future.error('Location services are disabled.');

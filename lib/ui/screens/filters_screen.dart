@@ -39,7 +39,7 @@ class _Content extends StatelessWidget {
           AssetsApp.arrowIcon,
           width: 24,
           height: 24,
-          color: Theme.of(context).textTheme.headline1.color,
+          color: Theme.of(context).textTheme.headline1!.color,
         ),
         action: Text(
           StringsApp.filterClear,
@@ -113,10 +113,10 @@ class _FilterItem extends StatelessWidget {
     this.onTap,
   });
 
-  final Function onTap;
-  final bool isChecked;
-  final String iconName;
-  final String text;
+  final Function? onTap;
+  final bool? isChecked;
+  final String? iconName;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class _FilterItem extends StatelessWidget {
       children: [
         InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(100)),
-          onTap: onTap,
+          onTap: onTap as void Function()?,
           child: Stack(
             children: [
               Container(
@@ -136,13 +136,13 @@ class _FilterItem extends StatelessWidget {
                 ),
                 child: UnconstrainedBox(
                   child: Image.asset(
-                    iconName,
+                    iconName!,
                     width: 32,
                     color: ColorsApp.green,
                   ),
                 ),
               ),
-              isChecked
+              isChecked!
                   ? Positioned(
                       right: 0,
                       bottom: -4,
@@ -154,16 +154,16 @@ class _FilterItem extends StatelessWidget {
                       ),
                     )
                   : null
-            ].where((e) => e != null).toList(),
+            ].where((e) => e != null).toList() as List<Widget>,
           ),
         ),
         const SizedBox(
           height: 15,
         ),
         Text(
-          text,
+          text!,
           style: TextStylesApp.size14.copyWith(
-            color: Theme.of(context).textTheme.headline1.color,
+            color: Theme.of(context).textTheme.headline1!.color,
           ),
         ),
       ],
@@ -218,7 +218,7 @@ class _MyRangeSlider extends StatelessWidget {
                 Text(
                   StringsApp.filterDistance,
                   style: TextStylesApp.size16.copyWith(
-                    color: Theme.of(context).textTheme.bodyText1.color,
+                    color: Theme.of(context).textTheme.bodyText1!.color,
                   ),
                 ),
                 Text(
@@ -272,9 +272,9 @@ class _AcceptButton extends StatelessWidget {
 }
 
 class _RangeModel extends ChangeNotifier {
-  RangeValues _rangeValues;
-  double _userPositionLat;
-  double _userPositionLon;
+  RangeValues? _rangeValues;
+  double? _userPositionLat;
+  double? _userPositionLon;
   bool _visibilityStatus = false;
   bool _loadingLocationStatus = true;
 
@@ -313,7 +313,7 @@ class _RangeModel extends ChangeNotifier {
 
   /// Определение местоположения пользователя
   /// callByButton - выполнить действия если метод был вызван нажатием кнопки
-  Future<void> getUserPosition({bool callByButton}) async {
+  Future<void> getUserPosition({bool? callByButton}) async {
     try {
       _loadingLocationStatus = true;
       notifyListeners();
@@ -358,15 +358,15 @@ class _RangeModel extends ChangeNotifier {
               !_arePointsNear(
                 48.492321,
                 34.959163,
-                _userPositionLat,
-                _userPositionLon,
+                _userPositionLat!,
+                _userPositionLon!,
                 rangeValues.start,
               ) &&
               _arePointsNear(
                 48.492321,
                 34.959163,
-                _userPositionLat,
-                _userPositionLon,
+                _userPositionLat!,
+                _userPositionLon!,
                 rangeValues.end,
               ),
         )

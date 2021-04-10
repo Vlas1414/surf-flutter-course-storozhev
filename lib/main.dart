@@ -39,7 +39,7 @@ class ThemeModel extends ChangeNotifier {
   /// Выбрана ли темная тема
   bool get isDarkMode => _isDarkMode;
 
-  void changeMode({bool newValue}) {
+  void changeMode({bool? newValue}) {
     if (newValue != null) {
       _isDarkMode = newValue;
       notifyListeners();

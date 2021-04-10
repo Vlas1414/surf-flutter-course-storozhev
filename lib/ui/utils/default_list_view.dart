@@ -9,9 +9,9 @@ import 'package:places/constants/textStylesApp.dart';
 /// imageSrcEmptyArray - картинка если нет элементов
 /// textEmptyArray - текст если нет элементов
 class DefaultListView extends StatelessWidget {
-  final List<Widget> children;
-  final String imageSrcEmptyArray;
-  final String textEmptyArray;
+  final List<Widget>? children;
+  final String? imageSrcEmptyArray;
+  final String? textEmptyArray;
 
   DefaultListView({
     this.children,
@@ -42,7 +42,7 @@ class DefaultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (children.length == 0) {
+    if (children!.length == 0) {
       return Container(
         width: double.infinity,
         height: double.infinity,
@@ -51,7 +51,7 @@ class DefaultListView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              imageSrcEmptyArray,
+              imageSrcEmptyArray!,
               width: 65,
               color: ColorsApp.inactiveBlack,
             ),
@@ -66,7 +66,7 @@ class DefaultListView extends StatelessWidget {
             Container(
               width: 190,
               child: Text(
-                textEmptyArray,
+                textEmptyArray!,
                 style: TextStylesApp.size15Weight400.copyWith(
                   color: ColorsApp.inactiveBlack,
                 ),
@@ -83,7 +83,7 @@ class DefaultListView extends StatelessWidget {
       child: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 15),
         child: Column(
-          children: children
+          children: children!
               .map(
                 (element) => Container(
                   margin: const EdgeInsets.only(

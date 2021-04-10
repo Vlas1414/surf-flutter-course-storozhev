@@ -17,11 +17,11 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _preferredSize = 60;
   final double _preferredSizeBottom = 60;
 
-  final String title;
-  final Widget bottom;
-  final Widget leading;
-  final Widget action;
-  final Function onTapAction;
+  final String? title;
+  final Widget? bottom;
+  final Widget? leading;
+  final Widget? action;
+  final Function? onTapAction;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: title != null
           ? Text(
-              title,
+              title!,
               style: TextStylesApp.size20Weight500.copyWith(
-                color: Theme.of(context).textTheme.bodyText1.color,
+                color: Theme.of(context).textTheme.bodyText1!.color,
               ),
             )
           : null,
@@ -50,15 +50,15 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: action != null
           ? [
               CupertinoButton(
-                onPressed: onTapAction,
-                child: action,
+                onPressed: onTapAction as void Function()?,
+                child: action!,
               ),
             ]
           : [],
       leading: leading != null
           ? CupertinoButton(
               onPressed: () {},
-              child: leading,
+              child: leading!,
             )
           : null,
     );

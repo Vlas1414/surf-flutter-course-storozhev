@@ -31,7 +31,7 @@ class ImageLoading extends StatelessWidget {
             loadingBuilder: (
               BuildContext context,
               Widget child,
-              ImageChunkEvent loadingProgress,
+              ImageChunkEvent? loadingProgress,
             ) {
               if (loadingProgress == null) {
                 return child;
@@ -40,7 +40,7 @@ class ImageLoading extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: LinearProgressIndicator(
                   value: loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes,
+                      loadingProgress.expectedTotalBytes!,
                 ),
               );
             },

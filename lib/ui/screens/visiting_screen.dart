@@ -15,13 +15,13 @@ class VisitingScreen extends StatefulWidget {
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  TabController? tabController;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
-    tabController.addListener(() {
+    tabController!.addListener(() {
       setState(() {});
     });
   }
@@ -54,10 +54,10 @@ class _VisitingScreenState extends State<VisitingScreen>
 /// TODO: анимация перехода между табами
 /// TODO: обработка нажатий по интдикатору
 class _CustomTabIndicator extends StatelessWidget {
-  final TabController tabController;
+  final TabController? tabController;
 
   _CustomTabIndicator({
-    Key key,
+    Key? key,
     this.tabController,
   }) : super(key: key);
 
@@ -96,11 +96,11 @@ class _CustomTabIndicator extends StatelessWidget {
                         style: tabController?.index == 0
                             ? TextStylesApp.size16Weight700.copyWith(
                                 color:
-                                    Theme.of(context).textTheme.headline5.color,
+                                    Theme.of(context).textTheme.headline5!.color,
                               )
                             : TextStylesApp.size16Weight700.copyWith(
                                 color:
-                                    Theme.of(context).textTheme.headline4.color,
+                                    Theme.of(context).textTheme.headline4!.color,
                               ),
                       ),
                     ),
@@ -112,11 +112,11 @@ class _CustomTabIndicator extends StatelessWidget {
                         style: tabController?.index == 1
                             ? TextStylesApp.size16Weight700.copyWith(
                                 color:
-                                    Theme.of(context).textTheme.headline5.color,
+                                    Theme.of(context).textTheme.headline5!.color,
                               )
                             : TextStylesApp.size16Weight700.copyWith(
                                 color:
-                                    Theme.of(context).textTheme.headline4.color,
+                                    Theme.of(context).textTheme.headline4!.color,
                               ),
                       ),
                     ),

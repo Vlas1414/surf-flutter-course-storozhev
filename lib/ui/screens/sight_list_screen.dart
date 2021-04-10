@@ -41,7 +41,7 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Text(
         title,
         style: TextStylesApp.size32WeightBold.copyWith(
-          color: Theme.of(context).textTheme.bodyText1.color,
+          color: Theme.of(context).textTheme.bodyText1!.color,
         ),
         maxLines: 2,
       ),

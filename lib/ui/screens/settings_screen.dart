@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget buildRow({String text, Widget action, Function onTap}) {
+    Widget buildRow({required String text, Widget? action, Function? onTap}) {
       return InkWell(
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        onTap: onTap,
+        onTap: onTap as void Function()?,
         child: Container(
           height: 48,
           child: Row(
@@ -26,11 +26,11 @@ class SettingsScreen extends StatelessWidget {
               Text(
                 text,
                 style: TextStylesApp.size16.copyWith(
-                  color: Theme.of(context).textTheme.bodyText1.color,
+                  color: Theme.of(context).textTheme.bodyText1!.color,
                 ),
               ),
               const Spacer(),
-              action,
+              action!,
             ],
           ),
         ),
