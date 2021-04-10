@@ -123,7 +123,6 @@ class _FilterItem extends StatelessWidget {
     return Column(
       children: [
         InkWell(
-          radius: 100,
           borderRadius: const BorderRadius.all(Radius.circular(100)),
           onTap: onTap,
           child: Stack(

@@ -97,73 +97,83 @@ class SightCard extends StatelessWidget {
       decoration: const BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
-      child: Column(
+      child: Stack(
         children: [
-          Container(
-            height: 100,
-            width: double.infinity,
-            color: ColorsApp.greyTestColor,
-            child: Stack(
-              children: [
-                ImageLoading(sight.url),
-                Positioned(
-                  left: 16,
-                  top: 16,
-                  child: Text(
-                    sight.type.text.toLowerCase(),
-                    style: TextStylesApp.size14WeightBold.copyWith(
-                      color: ColorsApp.white,
+          Column(
+            children: [
+              Container(
+                height: 100,
+                width: double.infinity,
+                color: ColorsApp.greyTestColor,
+                child: ImageLoading(sight.url),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                color: Theme.of(context).primaryColor,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      sight.name,
+                      style: TextStylesApp.size16Weight500.copyWith(
+                          color: Theme.of(context).textTheme.headline1.color),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
+                    if (content != null) content,
+                    const SizedBox(height: 5),
+                    Text(
+                      sight.details.toLowerCase(),
+                      style: TextStylesApp.size14.copyWith(
+                        color: ColorsApp.secondary2,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
-                actions != null
-                    ? Positioned(
-                        right: 16,
-                        top: 16,
-                        child: Row(
-                          children: actions
-                              .map(
-                                (e) => CupertinoButton(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  minSize: 0,
-                                  child: e.child,
-                                  onPressed: e.func,
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      )
-                    : null,
-              ].where((child) => child != null).toList(),
+              ),
+            ],
+          ),
+          Positioned.fill(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  print('Tap on cart');
+                },
+                highlightColor: Colors.transparent,
+              ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            color: Theme.of(context).primaryColor,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  sight.name,
-                  style: TextStylesApp.size16Weight500.copyWith(
-                      color: Theme.of(context).textTheme.headline1.color),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                content,
-                const SizedBox(height: 5),
-                Text(
-                  sight.details.toLowerCase(),
-                  style: TextStylesApp.size14.copyWith(
-                    color: ColorsApp.secondary2,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ].where((child) => child != null).toList(),
+          Positioned(
+            left: 16,
+            top: 16,
+            child: Text(
+              sight.type.text.toLowerCase(),
+              style: TextStylesApp.size14WeightBold.copyWith(
+                color: ColorsApp.white,
+              ),
             ),
           ),
+          if (actions != null)
+            Positioned(
+              right: 0,
+              top: 0,
+              child: Row(
+                children: actions
+                    .map(
+                      (e) => CupertinoButton(
+                        padding: const EdgeInsets.all(16.0),
+                        minSize: 0,
+                        child: e.child,
+                        onPressed: e.func,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
         ],
       ),
     );
