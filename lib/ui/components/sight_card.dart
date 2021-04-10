@@ -13,7 +13,7 @@ import 'package:places/ui/utils/image_loading.dart';
 class ActionButton {
   Widget child;
   Function? func;
-  ActionButton({required this.child, this.func}) : assert(child != null);
+  ActionButton({required this.child, this.func});
 }
 
 /// Виджет места, елемент списка экрана интересных мест
@@ -27,7 +27,7 @@ class SightCard extends StatelessWidget {
   final List<ActionButton>? actions;
   final Widget? content;
 
-  SightCard({required this.sight, this.actions, this.content}) : assert(sight != null);
+  SightCard({required this.sight, this.actions, this.content});
 
   SightCard.simple(Sight sight)
       : this(
