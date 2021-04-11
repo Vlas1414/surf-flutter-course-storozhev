@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/text_styles_app.dart';
 
 /// Макет стандартного AppBar для большенства экранов приложения
 /// title - заголовок
 /// bottom - нижняя часть AppBar
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
-  DefaultAppBar({
+  const DefaultAppBar({
     this.title,
     this.bottom,
     this.action,
     this.leading,
     this.onTapAction,
-  });
+    Key? key,
+  }) : super(key: key);
 
-  final double _preferredSize = 60;
-  final double _preferredSizeBottom = 60;
+  static const double _preferredSize = 60;
+  static const double _preferredSizeBottom = 60;
 
   final String? title;
   final Widget? bottom;
@@ -39,12 +40,12 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       bottom: bottom != null
           ? PreferredSize(
+              preferredSize: const Size.fromHeight(_preferredSizeBottom),
               child: Container(
                 alignment: Alignment.center,
                 height: _preferredSizeBottom,
                 child: bottom,
               ),
-              preferredSize: Size.fromHeight(_preferredSizeBottom),
             )
           : null,
       actions: action != null

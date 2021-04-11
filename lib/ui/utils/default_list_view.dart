@@ -1,54 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 
 /// Макет стандартного отображения списка для большенства экранов приложения
 /// children - список элементов
 /// imageSrcEmptyArray - картинка если нет элементов
 /// textEmptyArray - текст если нет элементов
 class DefaultListView extends StatelessWidget {
-  final List<Widget>? children;
-  final String? imageSrcEmptyArray;
-  final String? textEmptyArray;
-
-  DefaultListView({
+  const DefaultListView({
     this.children,
     this.imageSrcEmptyArray,
     this.textEmptyArray,
-  });
+    Key? key,
+  }) : super(key: key);
 
-  DefaultListView.futureVisite(List<Widget> children)
+  const DefaultListView.futureVisite(List<Widget> children, {Key? key})
       : this(
+          key: key,
           children: children,
           imageSrcEmptyArray: AssetsApp.empty,
           textEmptyArray: StringsApp.visitingTabEmptyTextFuture,
         );
 
-  DefaultListView.pastVisite(List<Widget> children)
+  const DefaultListView.pastVisite(List<Widget> children, {Key? key})
       : this(
+          key: key,
           children: children,
           imageSrcEmptyArray: AssetsApp.goIcon,
           textEmptyArray: StringsApp.visitingTabEmptyTextPast,
         );
 
-  DefaultListView.simpleList(List<Widget> children)
+  const DefaultListView.simpleList(List<Widget> children, {Key? key})
       : this(
+          key: key,
           children: children,
           imageSrcEmptyArray: AssetsApp.geolocationIcon,
           textEmptyArray: StringsApp.simpleListEmptyText,
         );
+  final List<Widget>? children;
+  final String? imageSrcEmptyArray;
+  final String? textEmptyArray;
 
   @override
   Widget build(BuildContext context) {
-    if (children!.length == 0) {
-      return Container(
+    if (children!.isEmpty) {
+      return SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               imageSrcEmptyArray!,
@@ -63,7 +65,7 @@ class DefaultListView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15),
-            Container(
+            SizedBox(
               width: 190,
               child: Text(
                 textEmptyArray!,

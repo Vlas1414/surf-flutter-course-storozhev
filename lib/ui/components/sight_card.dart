@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// класс кнопки на карточке
 /// child - виджет кнопки
 /// func - обработка нажатия по кнопке
 class ActionButton {
+  ActionButton({required this.child, this.func});
+
   Widget child;
   Function? func;
-  ActionButton({required this.child, this.func});
 }
 
 /// Виджет места, елемент списка экрана интересных мест
@@ -22,26 +23,31 @@ class ActionButton {
 /// content - дополнительная информация
 /// TODO: отображение даты запланированного и посещенного
 class SightCard extends StatelessWidget {
-  @required
-  final Sight sight;
-  final List<ActionButton>? actions;
-  final Widget? content;
+  const SightCard({
+    required this.sight,
+    this.actions,
+    this.content,
+    Key? key,
+  }) : super(key: key);
 
-  SightCard({required this.sight, this.actions, this.content});
-
-  SightCard.simple(Sight sight)
+  SightCard.simple(Sight sight, {Key? key})
       : this(
+          key: key,
           sight: sight,
           actions: [
             ActionButton(
               child: Image.asset(AssetsApp.heartIcon, width: 25),
-              func: () => print('Tap heartIcon'),
+              func: () {
+                // ignore: avoid_print
+                print('Tap heartIcon');
+              },
             )
           ],
         );
 
-  SightCard.futureVisite(Sight sight)
+  SightCard.futureVisite(Sight sight, {Key? key})
       : this(
+          key: key,
           sight: sight,
           actions: [
             ActionButton(
@@ -50,15 +56,17 @@ class SightCard extends StatelessWidget {
                 width: 25,
                 color: ColorsApp.white,
               ),
+              // ignore: avoid_print
               func: () => print('Tap calendarIcon'),
             ),
             ActionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
+              // ignore: avoid_print
               func: () => print('Tap crossIcon'),
             ),
           ],
           content: Text(
-            StringsApp.visitingPlanAt + "12 окт. 2020",
+            '${StringsApp.visitingPlanAt}12 окт. 2020',
             style: TextStylesApp.size14.copyWith(
               color: ColorsApp.green,
             ),
@@ -67,21 +75,24 @@ class SightCard extends StatelessWidget {
           ),
         );
 
-  SightCard.pastVisite(Sight sight)
+  SightCard.pastVisite(Sight sight, {Key? key})
       : this(
+          key: key,
           sight: sight,
           actions: [
             ActionButton(
               child: Image.asset(AssetsApp.shareIcon, width: 25),
+              // ignore: avoid_print
               func: () => print('Tap shareIcon'),
             ),
             ActionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
+              // ignore: avoid_print
               func: () => print('Tap crossIcon 2'),
             ),
           ],
           content: Text(
-            StringsApp.visitingGoalAchievedAt + "12 окт. 2020",
+            '${StringsApp.visitingGoalAchievedAt}12 окт. 2020',
             style: TextStylesApp.size14.copyWith(
               color: ColorsApp.secondary2,
             ),
@@ -89,13 +100,17 @@ class SightCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         );
+  @required
+  final Sight sight;
+  final List<ActionButton>? actions;
+  final Widget? content;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: const BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Stack(
         children: [
@@ -140,9 +155,8 @@ class SightCard extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: () {
-                  print('Tap on cart');
-                },
+                // ignore: avoid_print
+                onTap: () => print('Tap on cart'),
                 highlightColor: Colors.transparent,
               ),
             ),
@@ -167,8 +181,8 @@ class SightCard extends StatelessWidget {
                       (e) => CupertinoButton(
                         padding: const EdgeInsets.all(16.0),
                         minSize: 0,
-                        child: e.child,
                         onPressed: e.func as void Function()?,
+                        child: e.child,
                       ),
                     )
                     .toList(),

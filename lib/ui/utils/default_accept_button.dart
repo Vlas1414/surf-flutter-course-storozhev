@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 
 class DefaultAcceptButton extends StatelessWidget {
+  const DefaultAcceptButton({
+    this.text,
+    this.icon,
+    Key? key,
+  })  : assert(text != null || icon != null),
+        super(key: key);
+
   final String? text;
   final String? icon;
 
-  DefaultAcceptButton({this.text, this.icon})
-      : assert(text != null || icon != null);
-
   @override
   Widget build(BuildContext context) {
-    Text? textWidget = text != null
+    final Text? textWidget = text != null
         ? Text(
             text!.toUpperCase(),
             style: TextStylesApp.size14WeightBold.copyWith(
@@ -19,7 +23,7 @@ class DefaultAcceptButton extends StatelessWidget {
             ),
           )
         : null;
-    Image? iconWidget = icon != null
+    final Image? iconWidget = icon != null
         ? Image.asset(
             icon!,
             width: 25,
@@ -42,12 +46,13 @@ class DefaultAcceptButton extends StatelessWidget {
     }
 
     return TextButton(
+      // ignore: avoid_print
       onPressed: () => print('Tap big green button'),
       style: TextButton.styleFrom(
         primary: Theme.of(context).textTheme.headline1!.color,
         minimumSize: const Size.fromHeight(55),
         shape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         backgroundColor: ColorsApp.green,
       ),

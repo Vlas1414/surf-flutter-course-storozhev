@@ -1,5 +1,5 @@
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/stringsApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/strings_app.dart';
 import 'package:places/domain/sight.dart';
 
 final List<Sight> mocksSights = [

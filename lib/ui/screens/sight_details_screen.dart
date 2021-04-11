@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 import 'package:places/ui/utils/default_accept_button.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// Экран подробной информации о посещаемом месте
 class SightDetailsScreen extends StatelessWidget {
+  const SightDetailsScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,7 @@ class SightDetailsScreen extends StatelessWidget {
               color: Colors.grey,
               child: Stack(
                 children: [
-                  Container(
+                  const SizedBox(
                     width: double.infinity,
                     height: double.infinity,
                     child: ImageLoading(
@@ -40,6 +41,7 @@ class SightDetailsScreen extends StatelessWidget {
                         ),
                         backgroundColor: Theme.of(context).backgroundColor,
                       ),
+                      // ignore: avoid_print
                       onPressed: () => print('Tap back'),
                       child: Image.asset(
                         AssetsApp.arrowIcon,
@@ -92,7 +94,7 @@ class SightDetailsScreen extends StatelessWidget {
                         color: Theme.of(context).textTheme.headline1!.color),
                   ),
                   const SizedBox(height: 24),
-                  DefaultAcceptButton(
+                  const DefaultAcceptButton(
                     icon: AssetsApp.goIcon,
                     text: StringsApp.detailsBuildRouteTextButton,
                   ),
@@ -109,6 +111,7 @@ class SightDetailsScreen extends StatelessWidget {
                       CupertinoButton(
                         minSize: 0,
                         padding: EdgeInsets.zero,
+                        // ignore: avoid_print
                         onPressed: () => print('Tap plan'),
                         child: Row(
                           children: [
@@ -131,6 +134,7 @@ class SightDetailsScreen extends StatelessWidget {
                       CupertinoButton(
                         minSize: 0,
                         padding: EdgeInsets.zero,
+                        // ignore: avoid_print
                         onPressed: () => print('Tap to favorite'),
                         child: Row(
                           children: [
@@ -145,8 +149,10 @@ class SightDetailsScreen extends StatelessWidget {
                             Text(
                               StringsApp.detailsLikeTextButton,
                               style: TextStylesApp.size14.copyWith(
-                                color:
-                                    Theme.of(context).textTheme.headline1!.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline1!
+                                    .color,
                               ),
                             ),
                           ],

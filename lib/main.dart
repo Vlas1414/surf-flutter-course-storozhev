@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/themes.dart';
 import 'package:places/ui/screens/filters_screen.dart';
-import 'package:places/ui/screens/settings_screen.dart';
-import 'package:places/ui/screens/sight_list_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -21,8 +20,8 @@ class App extends StatelessWidget {
               title: 'Places',
               theme: themeModel.isDarkMode ? darkTheme : lightTheme,
               home: //SettingsScreen(),
-                  //FiltersScreen(),
-                  SightListScreen(),
+                  const FiltersScreen(),
+              //const SightListScreen(),
               //SightDetailsScreen(),
               //VisitingScreen(),
             );

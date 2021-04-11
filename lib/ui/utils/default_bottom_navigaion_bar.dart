@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
 
 /// Нижняя навигация меню
 class DefaultBottomNavigationBar extends StatelessWidget {
+  const DefaultBottomNavigationBar({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -13,7 +14,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(
-          label: "",
+          label: '',
           icon: Image.asset(
             AssetsApp.listIcon,
             color: Theme.of(context).textTheme.bodyText1!.color,
@@ -21,7 +22,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
           ),
         ),
         BottomNavigationBarItem(
-          label: "",
+          label: '',
           icon: Image.asset(
             AssetsApp.heartIcon,
             color: Theme.of(context).textTheme.bodyText1!.color,
@@ -29,7 +30,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
           ),
         ),
         BottomNavigationBarItem(
-          label: "",
+          label: '',
           icon: Image.asset(
             AssetsApp.settingsFullIcon,
             color: Theme.of(context).textTheme.bodyText1!.color,

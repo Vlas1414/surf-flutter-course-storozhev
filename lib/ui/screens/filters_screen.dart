@@ -1,14 +1,15 @@
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/main.dart';
 import 'package:places/mocks.dart';
+import 'package:places/models/exception_model.dart';
 import 'package:places/services/location_service.dart';
 import 'package:places/ui/utils/default_accept_button.dart';
 import 'package:places/ui/utils/default_app_bar.dart';
@@ -16,6 +17,7 @@ import 'package:provider/provider.dart';
 
 /// Экран настроек фильтра
 class FiltersScreen extends StatelessWidget {
+  const FiltersScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -80,38 +82,40 @@ class _MyFilter extends StatelessWidget {
           ),
         ),
         Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 25),
-            child: Consumer<_CategoryModel>(
-              builder: (context, categoryModel, child) {
-                return GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 15,
-                  children: categoryModel.categories
-                      .map(
-                        (e) => _FilterItem(
-                          text: e.text,
-                          iconName: e.icon,
-                          isChecked: e.isChecked,
-                          onTap: () => categoryModel.onCheckItem(e),
-                        ),
-                      )
-                      .toList(),
-                );
-              },
-            )),
+          padding: const EdgeInsets.only(top: 20, bottom: 25),
+          child: Consumer<_CategoryModel>(
+            builder: (context, categoryModel, child) {
+              return GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                mainAxisSpacing: 15,
+                children: categoryModel.categories
+                    .map(
+                      (e) => _FilterItem(
+                        text: e.text,
+                        iconName: e.icon,
+                        isChecked: e.isChecked,
+                        onTap: () => categoryModel.onCheckItem(e),
+                      ),
+                    )
+                    .toList(),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
 }
 
 class _FilterItem extends StatelessWidget {
-  _FilterItem({
+  const _FilterItem({
     this.text,
     this.iconName,
     this.isChecked,
     this.onTap,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Function? onTap;
   final bool? isChecked;
@@ -142,19 +146,18 @@ class _FilterItem extends StatelessWidget {
                   ),
                 ),
               ),
-              isChecked!
-                  ? Positioned(
-                      right: 0,
-                      bottom: -4,
-                      child: Image.asset(
-                        Provider.of<ThemeModel>(context).isDarkMode
-                            ? AssetsApp.tickChoiceWhiteIcon
-                            : AssetsApp.tickChoiceIcon,
-                        width: 24,
-                      ),
-                    )
-                  : null
-            ].where((e) => e != null).toList() as List<Widget>,
+              if (isChecked!)
+                Positioned(
+                  right: 0,
+                  bottom: -4,
+                  child: Image.asset(
+                    Provider.of<ThemeModel>(context).isDarkMode
+                        ? AssetsApp.tickChoiceWhiteIcon
+                        : AssetsApp.tickChoiceIcon,
+                    width: 24,
+                  ),
+                )
+            ],
           ),
         ),
         const SizedBox(
@@ -177,8 +180,8 @@ class _MyRangeSlider extends StatelessWidget {
     return Consumer<_RangeModel>(
       builder: (context, rangeModel, child) {
         if (rangeModel.loadingLocationStatus) {
-          return Center(
-            child: Container(
+          return const Center(
+            child: SizedBox(
               width: 25,
               height: 25,
               child: CircularProgressIndicator(
@@ -222,7 +225,7 @@ class _MyRangeSlider extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${StringsApp.filterFrom} ${rangeModel.rangeValues.start ~/ 1000} ${StringsApp.filterTo.toLowerCase()} ${rangeModel.rangeValues.end ~/ 1000} ${StringsApp.filterKm}",
+                  '${StringsApp.filterFrom} ${rangeModel.rangeValues.start ~/ 1000} ${StringsApp.filterTo.toLowerCase()} ${rangeModel.rangeValues.end ~/ 1000} ${StringsApp.filterKm}',
                   style: TextStylesApp.size16.copyWith(
                     color: ColorsApp.secondary2,
                   ),
@@ -266,7 +269,7 @@ class _AcceptButton extends StatelessWidget {
           categoryFoundSights.any((element) => sight.name == element.name),
     );
     return DefaultAcceptButton(
-      text: StringsApp.filterShowBtn + ' (${foundSights.length})',
+      text: '${StringsApp.filterShowBtn}${' (${foundSights.length})'}',
     );
   }
 }
@@ -313,7 +316,7 @@ class _RangeModel extends ChangeNotifier {
 
   /// Определение местоположения пользователя
   /// callByButton - выполнить действия если метод был вызван нажатием кнопки
-  Future<void> getUserPosition({bool? callByButton}) async {
+  Future<void> getUserPosition({bool callByButton = false}) async {
     try {
       _loadingLocationStatus = true;
       notifyListeners();
@@ -322,8 +325,8 @@ class _RangeModel extends ChangeNotifier {
       );
       _userPositionLat = geoResult.latitude;
       _userPositionLon = geoResult.longitude;
-    } catch (e) {
-      print('Error get location: $e');
+    } on LocationException catch (e) {
+      e.printMessage();
     } finally {
       if (_userPositionLat != null && _userPositionLon != null) {
         _visibilityStatus = true;
@@ -340,11 +343,11 @@ class _RangeModel extends ChangeNotifier {
     double centerLon,
     double m,
   ) {
-    var ky = 40000 / 360;
-    var kx = Math.cos(Math.pi * centerLat / 180.0) * ky;
-    var dx = (centerLon - checkLon).abs() * kx;
-    var dy = (centerLat - checkLat).abs() * ky;
-    return Math.sqrt(dx * dx + dy * dy) <= m / 1000;
+    const ky = 40000 / 360;
+    final kx = math.cos(math.pi * centerLat / 180.0) * ky;
+    final dx = (centerLon - checkLon).abs() * kx;
+    final dy = (centerLat - checkLat).abs() * ky;
+    return math.sqrt(dx * dx + dy * dy) <= m / 1000;
   }
 
   /// Поиск совпадающих мест
@@ -389,9 +392,9 @@ class _CategoryModel extends ChangeNotifier {
 
   /// Очистить выбранные категории
   void uncheckAllItems() {
-    _categories.forEach((e) {
-      e.uncheck();
-    });
+    for (final category in _categories) {
+      category.uncheck();
+    }
     notifyListeners();
   }
 
