@@ -1,15 +1,15 @@
 class Sight {
   Sight({
     required this.name,
+    required this.lat,
+    required this.lon,
     required this.url,
     required this.details,
     required this.type,
-    this.lat,
-    this.lon,
   });
   final String name;
-  final double? lat;
-  final double? lon;
+  final double lat;
+  final double lon;
   final String url;
   final String details;
   final TypeOfSight type;

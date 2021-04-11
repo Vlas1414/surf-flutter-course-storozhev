@@ -359,15 +359,15 @@ class _RangeModel extends ChangeNotifier {
         .where(
           (e) =>
               !_arePointsNear(
-                48.492321,
-                34.959163,
+                e.lat,
+                e.lon,
                 _userPositionLat!,
                 _userPositionLon!,
                 rangeValues.start,
               ) &&
               _arePointsNear(
-                48.492321,
-                34.959163,
+                e.lat,
+                e.lon,
                 _userPositionLat!,
                 _userPositionLon!,
                 rangeValues.end,
