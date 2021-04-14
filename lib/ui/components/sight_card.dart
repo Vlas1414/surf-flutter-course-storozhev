@@ -24,7 +24,7 @@ class ActionButton {
 class SightCard extends StatelessWidget {
   @required
   final Sight sight;
-  final List<ActionButton> actions;
+  final List<Widget> actions;
   final Widget content;
 
   SightCard({this.sight, this.actions, this.content}) : assert(sight != null);
@@ -33,9 +33,9 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.heartIcon, width: 25),
-              func: () => print('Tap heartIcon'),
+              onPressed: () => print('Tap heartIcon'),
             )
           ],
         );
@@ -44,17 +44,17 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(
                 AssetsApp.calendarIcon,
                 width: 25,
                 color: ColorsApp.white,
               ),
-              func: () => print('Tap calendarIcon'),
+              onPressed: () => print('Tap calendarIcon'),
             ),
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
-              func: () => print('Tap crossIcon'),
+              onPressed: () => print('Tap crossIcon'),
             ),
           ],
           content: Text(
@@ -69,13 +69,13 @@ class SightCard extends StatelessWidget {
       : this(
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.shareIcon, width: 25),
-              func: () => print('Tap shareIcon'),
+              onPressed: () => print('Tap shareIcon'),
             ),
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
-              func: () => print('Tap crossIcon 2'),
+              onPressed: () => print('Tap crossIcon 2'),
             ),
           ],
           content: Text(
@@ -85,6 +85,14 @@ class SightCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         );
+  static Widget actionButton({Widget child, Function onPressed}) {
+    return CupertinoButton(
+      padding: EdgeInsets.only(left: 15),
+      minSize: 0,
+      child: child,
+      onPressed: onPressed,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,16 +123,7 @@ class SightCard extends StatelessWidget {
                         right: 16,
                         top: 16,
                         child: Row(
-                          children: actions
-                              .map(
-                                (e) => CupertinoButton(
-                                  padding: EdgeInsets.only(left: 15),
-                                  minSize: 0,
-                                  child: e.child,
-                                  onPressed: e.func,
-                                ),
-                              )
-                              .toList(),
+                          children: actions,
                         ),
                       )
                     : null,
