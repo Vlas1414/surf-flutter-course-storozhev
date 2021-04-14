@@ -35,12 +35,10 @@ class SightCard extends StatelessWidget {
           key: key,
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.heartIcon, width: 25),
-              func: () {
-                // ignore: avoid_print
-                print('Tap heartIcon');
-              },
+              // ignore: avoid_print
+              onPressed: () => print('Tap heartIcon'),
             )
           ],
         );
@@ -50,19 +48,19 @@ class SightCard extends StatelessWidget {
           key: key,
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(
                 AssetsApp.calendarIcon,
                 width: 25,
                 color: ColorsApp.white,
               ),
               // ignore: avoid_print
-              func: () => print('Tap calendarIcon'),
+              onPressed: () => print('Tap calendarIcon'),
             ),
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
               // ignore: avoid_print
-              func: () => print('Tap crossIcon'),
+              onPressed: () => print('Tap crossIcon'),
             ),
           ],
           content: Text(
@@ -80,15 +78,15 @@ class SightCard extends StatelessWidget {
           key: key,
           sight: sight,
           actions: [
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.shareIcon, width: 25),
               // ignore: avoid_print
-              func: () => print('Tap shareIcon'),
+              onPressed: () => print('Tap shareIcon'),
             ),
-            ActionButton(
+            actionButton(
               child: Image.asset(AssetsApp.crossIcon, width: 25),
               // ignore: avoid_print
-              func: () => print('Tap crossIcon 2'),
+              onPressed: () => print('Tap crossIcon 2'),
             ),
           ],
           content: Text(
@@ -102,8 +100,17 @@ class SightCard extends StatelessWidget {
         );
   @required
   final Sight sight;
-  final List<ActionButton>? actions;
+  final List<Widget>? actions;
   final Widget? content;
+
+  static Widget actionButton({required Widget child, Function()? onPressed}) {
+    return CupertinoButton(
+      padding: const EdgeInsets.only(left: 15),
+      minSize: 0,
+      onPressed: onPressed,
+      child: child,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -176,16 +183,7 @@ class SightCard extends StatelessWidget {
               right: 0,
               top: 0,
               child: Row(
-                children: actions!
-                    .map(
-                      (e) => CupertinoButton(
-                        padding: const EdgeInsets.all(16.0),
-                        minSize: 0,
-                        onPressed: e.func as void Function()?,
-                        child: e.child,
-                      ),
-                    )
-                    .toList(),
+                children: actions!,
               ),
             ),
         ],
