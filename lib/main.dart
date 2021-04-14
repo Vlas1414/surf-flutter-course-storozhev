@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/themes.dart';
+import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/screens/filters_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,8 +20,9 @@ class App extends StatelessWidget {
             return MaterialApp(
               title: 'Places',
               theme: themeModel.isDarkMode ? darkTheme : lightTheme,
-              home: //SettingsScreen(),
-                  const FiltersScreen(),
+              home: const AddSightScreen(),
+              //SettingsScreen(),
+              // const FiltersScreen(),
               //const SightListScreen(),
               //SightDetailsScreen(),
               //VisitingScreen(),

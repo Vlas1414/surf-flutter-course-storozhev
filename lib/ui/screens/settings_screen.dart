@@ -16,9 +16,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget buildRow({required String text, Widget? action, Function? onTap}) {
       return InkWell(
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        borderRadius: BorderRadius.circular(10),
         onTap: onTap as void Function()?,
         child: SizedBox(
           height: 48,

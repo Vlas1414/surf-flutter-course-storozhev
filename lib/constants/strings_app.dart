@@ -1,6 +1,9 @@
 /// Строки приложения places
 class StringsApp {
   static const String repeat = 'Повторить';
+  static const String cancel = 'Отмена';
+  static const String save = 'Сохранить';
+  static const String create = 'Создать';
 
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';
@@ -50,4 +53,14 @@ class StringsApp {
   static const String settingsTitle = 'Настройки';
   static const String settingsDarkThemeName = 'Тёмная тема';
   static const String settingsWhatchTutorial = 'Смотреть туториал';
+
+  /// SCREEN ADD SIGHT
+  static const String addSightTitle = 'Новое место';
+  static const String addSightCategory = 'Категория';
+  static const String addSightCategoryNotSelected = 'Не выбрано';
+  static const String addSightName = 'Название';
+  static const String addSightLat = 'Широта';
+  static const String addSightLon = 'Долгота';
+  static const String addSightDesc = 'Описание';
+  static const String addSightSetOnMap = 'Указать на карте';
 }

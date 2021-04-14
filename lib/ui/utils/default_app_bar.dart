@@ -11,6 +11,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.bottom,
     this.action,
     this.leading,
+    this.leadingWidth,
     this.onTapAction,
     Key? key,
   }) : super(key: key);
@@ -21,6 +22,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final Widget? bottom;
   final Widget? leading;
+  final double? leadingWidth;
   final Widget? action;
   final Function? onTapAction;
 
@@ -56,6 +58,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ]
           : [],
+      leadingWidth: leadingWidth,
       leading: leading != null
           ? CupertinoButton(
               onPressed: () {},
