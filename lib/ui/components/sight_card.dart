@@ -103,9 +103,10 @@ class SightCard extends StatelessWidget {
   final List<Widget>? actions;
   final Widget? content;
 
-  static Widget actionButton({required Widget child, Function()? onPressed}) {
+  static Widget actionButton(
+      {required Widget child, required Function() onPressed}) {
     return CupertinoButton(
-      padding: const EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.only(right: 15, top: 15),
       minSize: 0,
       onPressed: onPressed,
       child: child,

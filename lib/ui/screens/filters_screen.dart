@@ -110,17 +110,17 @@ class _MyFilter extends StatelessWidget {
 
 class _FilterItem extends StatelessWidget {
   const _FilterItem({
-    this.text,
-    this.iconName,
-    this.isChecked,
-    this.onTap,
+    required this.text,
+    required this.iconName,
+    required this.isChecked,
+    required this.onTap,
     Key? key,
   }) : super(key: key);
 
-  final Function? onTap;
-  final bool? isChecked;
-  final String? iconName;
-  final String? text;
+  final Function onTap;
+  final bool isChecked;
+  final String iconName;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +128,7 @@ class _FilterItem extends StatelessWidget {
       children: [
         InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(100)),
-          onTap: onTap as void Function()?,
+          onTap: onTap as void Function(),
           child: Stack(
             children: [
               Container(
@@ -140,13 +140,13 @@ class _FilterItem extends StatelessWidget {
                 ),
                 child: UnconstrainedBox(
                   child: Image.asset(
-                    iconName!,
+                    iconName,
                     width: 32,
                     color: ColorsApp.green,
                   ),
                 ),
               ),
-              if (isChecked!)
+              if (isChecked)
                 Positioned(
                   right: 0,
                   bottom: -4,
@@ -164,7 +164,7 @@ class _FilterItem extends StatelessWidget {
           height: 15,
         ),
         Text(
-          text!,
+          text,
           style: TextStylesApp.size14.copyWith(
             color: Theme.of(context).textTheme.headline1!.color,
           ),

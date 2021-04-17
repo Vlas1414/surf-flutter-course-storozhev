@@ -10,9 +10,9 @@ import 'package:places/constants/text_styles_app.dart';
 /// textEmptyArray - текст если нет элементов
 class DefaultListView extends StatelessWidget {
   const DefaultListView({
-    this.children,
-    this.imageSrcEmptyArray,
-    this.textEmptyArray,
+    required this.children,
+    required this.imageSrcEmptyArray,
+    required this.textEmptyArray,
     Key? key,
   }) : super(key: key);
 
@@ -39,13 +39,13 @@ class DefaultListView extends StatelessWidget {
           imageSrcEmptyArray: AssetsApp.geolocationIcon,
           textEmptyArray: StringsApp.simpleListEmptyText,
         );
-  final List<Widget>? children;
-  final String? imageSrcEmptyArray;
-  final String? textEmptyArray;
+  final List<Widget> children;
+  final String imageSrcEmptyArray;
+  final String textEmptyArray;
 
   @override
   Widget build(BuildContext context) {
-    if (children!.isEmpty) {
+    if (children.isEmpty) {
       return SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -53,7 +53,7 @@ class DefaultListView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              imageSrcEmptyArray!,
+              imageSrcEmptyArray,
               width: 65,
               color: ColorsApp.inactiveBlack,
             ),
@@ -68,7 +68,7 @@ class DefaultListView extends StatelessWidget {
             SizedBox(
               width: 190,
               child: Text(
-                textEmptyArray!,
+                textEmptyArray,
                 style: TextStylesApp.size15Weight400.copyWith(
                   color: ColorsApp.inactiveBlack,
                 ),
@@ -85,7 +85,7 @@ class DefaultListView extends StatelessWidget {
       child: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 15),
         child: Column(
-          children: children!
+          children: children
               .map(
                 (element) => Container(
                   margin: const EdgeInsets.only(

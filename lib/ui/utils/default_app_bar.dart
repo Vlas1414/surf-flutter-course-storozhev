@@ -5,6 +5,9 @@ import 'package:places/constants/text_styles_app.dart';
 /// Макет стандартного AppBar для большенства экранов приложения
 /// title - заголовок
 /// bottom - нижняя часть AppBar
+/// action - кнопка слева
+/// leading - кнопка справа
+/// onTapAction - событие нажатия на кнопку слева
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DefaultAppBar({
     this.title,
