@@ -1,5 +1,7 @@
 /// Строки приложения places
 class StringsApp {
+  static const String repeat = 'Повторить';
+
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';
   static const String simpleListEmptyText =
@@ -26,4 +28,26 @@ class StringsApp {
       'Отмечайте понравившиеся места и они появятся здесь';
   static const String visitingTabEmptyTextPast =
       'Завершите маршрут, чтобы место попало сюда';
+
+  /// SCREEN FILTER
+  static const String filterClear = 'Очистить';
+  static const String filterDistance = 'Расстояние';
+  static const String filterErrorLocation = 'Не удалось определить расстояние';
+  static const String filterFrom = 'От';
+  static const String filterTo = 'До';
+  static const String filterKm = 'км';
+  static const String filterCategories = 'Категории';
+  static const String filterShowBtn = 'Показать';
+
+  static const String filterHotel = 'Отель';
+  static const String filterRestaurant = 'Ресторан';
+  static const String filterMuseum = 'Музей';
+  static const String filterPark = 'Парк';
+  static const String filterParticularPlace = 'Особое место';
+  static const String filterCafe = 'Кафе';
+
+  /// SCREEN SETTINGS
+  static const String settingsTitle = 'Настройки';
+  static const String settingsDarkThemeName = 'Тёмная тема';
+  static const String settingsWhatchTutorial = 'Смотреть туториал';
 }

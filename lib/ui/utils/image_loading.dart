@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
 
 /// загрузка изображения с прогрес индикатором
 /// url - ссылка на изображение
 class ImageLoading extends StatelessWidget {
-  final String url;
+  const ImageLoading(this.url, {Key? key}) : super(key: key);
 
-  ImageLoading(this.url);
+  final String url;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +22,16 @@ class ImageLoading extends StatelessWidget {
             height: 100,
           ),
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           height: double.infinity,
-          
           child: Image.network(
             url,
             fit: BoxFit.cover,
             loadingBuilder: (
-              BuildContext context,
-              Widget child,
-              ImageChunkEvent loadingProgress,
+              context,
+              child,
+              loadingProgress,
             ) {
               if (loadingProgress == null) {
                 return child;
@@ -41,7 +40,7 @@ class ImageLoading extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: LinearProgressIndicator(
                   value: loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes,
+                      loadingProgress.expectedTotalBytes!,
                 ),
               );
             },

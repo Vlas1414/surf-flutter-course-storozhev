@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/text_styles_app.dart';
 import 'package:places/ui/components/sight_card.dart';
 import 'package:places/ui/utils/default_app_bar.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
@@ -9,13 +9,14 @@ import 'package:places/ui/utils/default_list_view.dart';
 
 /// Экран посещённых мест
 class VisitingScreen extends StatefulWidget {
+  const VisitingScreen({Key? key}) : super(key: key);
   @override
   _VisitingScreenState createState() => _VisitingScreenState();
 }
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  late TabController tabController;
 
   @override
   void initState() {
@@ -29,8 +30,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: defaultAppBar(
-        context: context,
+      appBar: DefaultAppBar(
         title: StringsApp.visitingTitle,
         bottom: _CustomTabIndicator(
           tabController: tabController,
@@ -40,12 +40,12 @@ class _VisitingScreenState extends State<VisitingScreen>
         controller: tabController,
         children: [
           DefaultListView.futureVisite([
-            SightCard.futureVisite(mocks[1]),
+            SightCard.futureVisite(mocksSights[1]),
           ]),
-          DefaultListView.pastVisite([]),
+          const DefaultListView.pastVisite([]),
         ],
       ),
-      bottomNavigationBar: defaultBottomNavigationBar(context),
+      bottomNavigationBar: const DefaultBottomNavigationBar(),
     );
   }
 }
@@ -55,12 +55,12 @@ class _VisitingScreenState extends State<VisitingScreen>
 /// TODO: анимация перехода между табами
 /// TODO: обработка нажатий по интдикатору
 class _CustomTabIndicator extends StatelessWidget {
-  final TabController tabController;
-
-  _CustomTabIndicator({
-    Key key,
-    this.tabController,
+  const _CustomTabIndicator({
+    required this.tabController,
+    Key? key,
   }) : super(key: key);
+
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +74,11 @@ class _CustomTabIndicator extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(40)),
       ),
       child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
+        builder: (context, constraints) {
           return Stack(
             children: [
               Positioned(
-                left: tabController?.index == 0 ? 0 : constraints.maxWidth / 2,
+                left: tabController.index == 0 ? 0 : constraints.maxWidth / 2,
                 child: Container(
                   width: constraints.maxWidth / 2,
                   height: constraints.maxHeight,
@@ -94,14 +94,18 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsApp.visitingTabTitleFuture,
-                        style: tabController?.index == 0
+                        style: tabController.index == 0
                             ? TextStylesApp.size16Weight700.copyWith(
-                                color:
-                                    Theme.of(context).textTheme.headline5.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .color,
                               )
                             : TextStylesApp.size16Weight700.copyWith(
-                                color:
-                                    Theme.of(context).textTheme.headline4.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline4!
+                                    .color,
                               ),
                       ),
                     ),
@@ -110,14 +114,18 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsApp.visitingTabTitlePast,
-                        style: tabController?.index == 1
+                        style: tabController.index == 1
                             ? TextStylesApp.size16Weight700.copyWith(
-                                color:
-                                    Theme.of(context).textTheme.headline5.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .color,
                               )
                             : TextStylesApp.size16Weight700.copyWith(
-                                color:
-                                    Theme.of(context).textTheme.headline4.color,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline4!
+                                    .color,
                               ),
                       ),
                     ),

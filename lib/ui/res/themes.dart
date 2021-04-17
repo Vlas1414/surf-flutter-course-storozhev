@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/colorsApp.dart';
+import 'package:places/constants/colors_app.dart';
 
 /// светлая тема для приложения
 final lightTheme = ThemeData(
+  appBarTheme: const AppBarTheme(brightness: Brightness.dark),
   backgroundColor: ColorsApp.white,
   scaffoldBackgroundColor: ColorsApp.white,
   primaryColor: ColorsApp.background,
   selectedRowColor: ColorsApp.secondary,
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyText1: TextStyle(color: ColorsApp.main),
     headline1: TextStyle(
       color: ColorsApp.secondary,
@@ -29,11 +30,12 @@ final lightTheme = ThemeData(
 
 /// темная тема для приложения
 final darkTheme = ThemeData(
+  appBarTheme: const AppBarTheme(brightness: Brightness.dark),
   backgroundColor: ColorsApp.dmMain,
   scaffoldBackgroundColor: ColorsApp.dmMain,
   primaryColor: ColorsApp.dark,
   selectedRowColor: ColorsApp.background,
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyText1: TextStyle(color: ColorsApp.white),
     headline1: TextStyle(
       color: ColorsApp.white,

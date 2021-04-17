@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/constants/assetsApp.dart';
-import 'package:places/constants/colorsApp.dart';
-import 'package:places/constants/stringsApp.dart';
-import 'package:places/constants/textStylesApp.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
+import 'package:places/constants/strings_app.dart';
+import 'package:places/constants/text_styles_app.dart';
+import 'package:places/ui/utils/default_accept_button.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// Экран подробной информации о посещаемом месте
 class SightDetailsScreen extends StatelessWidget {
+  const SightDetailsScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +22,7 @@ class SightDetailsScreen extends StatelessWidget {
               color: Colors.grey,
               child: Stack(
                 children: [
-                  Container(
+                  const SizedBox(
                     width: double.infinity,
                     height: double.infinity,
                     child: ImageLoading(
@@ -27,19 +30,25 @@ class SightDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 48, left: 16),
-                    width: 32,
-                    height: 32,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Image.asset(
-                      AssetsApp.arrowIcon,
-                      width: 24,
-                      height: 24,
-                      color: Theme.of(context).textTheme.headline1.color,
+                    margin: const EdgeInsets.only(top: 40, left: 10),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(6),
+                        minimumSize: const Size.square(0),
+                        primary: Theme.of(context).textTheme.headline1!.color,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Theme.of(context).backgroundColor,
+                      ),
+                      // ignore: avoid_print
+                      onPressed: () => print('Tap back'),
+                      child: Image.asset(
+                        AssetsApp.arrowIcon,
+                        width: 24,
+                        height: 24,
+                        color: Theme.of(context).textTheme.headline1!.color,
+                      ),
                     ),
                   ),
                 ],
@@ -57,7 +66,7 @@ class SightDetailsScreen extends StatelessWidget {
                   Text(
                     StringsApp.detailsTitle,
                     style: TextStylesApp.size24WeightBold.copyWith(
-                      color: Theme.of(context).textTheme.headline1.color,
+                      color: Theme.of(context).textTheme.headline1!.color,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -66,14 +75,14 @@ class SightDetailsScreen extends StatelessWidget {
                       Text(
                         StringsApp.detailsTypeName.toLowerCase(),
                         style: TextStylesApp.size14WeightBold.copyWith(
-                          color: Theme.of(context).textTheme.headline2.color,
+                          color: Theme.of(context).textTheme.headline2!.color,
                         ),
                       ),
                       const SizedBox(width: 16),
                       Text(
                         StringsApp.detailsScheduleInfo.toLowerCase(),
                         style: TextStylesApp.size14.copyWith(
-                          color: Theme.of(context).textTheme.headline3.color,
+                          color: Theme.of(context).textTheme.headline3!.color,
                         ),
                       ),
                     ],
@@ -82,31 +91,12 @@ class SightDetailsScreen extends StatelessWidget {
                   Text(
                     StringsApp.detailsDescription,
                     style: TextStylesApp.size14Height1_4.copyWith(
-                        color: Theme.of(context).textTheme.headline1.color),
+                        color: Theme.of(context).textTheme.headline1!.color),
                   ),
                   const SizedBox(height: 24),
-                  Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: const BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: ColorsApp.green,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          AssetsApp.goIcon,
-                          width: 25,
-                          height: 25,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          StringsApp.detailsBuildRouteTextButton.toUpperCase(),
-                          style: TextStylesApp.size14WeightBoldColorWhite,
-                        ),
-                      ],
-                    ),
+                  const DefaultAcceptButton(
+                    icon: AssetsApp.goIcon,
+                    text: StringsApp.detailsBuildRouteTextButton,
                   ),
                   const SizedBox(height: 24),
                   Container(
@@ -118,38 +108,55 @@ class SightDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            AssetsApp.calendarIcon,
-                            width: 24,
-                            height: 24,
-                            color: ColorsApp.inactiveBlack,
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            StringsApp.detailsPlanTextButton,
-                            style: TextStylesApp.size14ColorInactiveBlack,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AssetsApp.heartIcon,
-                            width: 24,
-                            height: 24,
-                            color: Theme.of(context).textTheme.headline1.color,
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            StringsApp.detailsLikeTextButton,
-                            style: TextStylesApp.size14.copyWith(
-                              color:
-                                  Theme.of(context).textTheme.headline1.color,
+                      CupertinoButton(
+                        minSize: 0,
+                        padding: EdgeInsets.zero,
+                        // ignore: avoid_print
+                        onPressed: () => print('Tap plan'),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AssetsApp.calendarIcon,
+                              width: 24,
+                              height: 24,
+                              color: ColorsApp.inactiveBlack,
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 10),
+                            Text(
+                              StringsApp.detailsPlanTextButton,
+                              style: TextStylesApp.size14.copyWith(
+                                color: ColorsApp.inactiveBlack,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CupertinoButton(
+                        minSize: 0,
+                        padding: EdgeInsets.zero,
+                        // ignore: avoid_print
+                        onPressed: () => print('Tap to favorite'),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AssetsApp.heartIcon,
+                              width: 24,
+                              height: 24,
+                              color:
+                                  Theme.of(context).textTheme.headline1!.color,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              StringsApp.detailsLikeTextButton,
+                              style: TextStylesApp.size14.copyWith(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline1!
+                                    .color,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

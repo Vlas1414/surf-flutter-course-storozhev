@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/colorsApp.dart';
 
 /// Стили текста в приложении places
 class TextStylesApp {
@@ -8,6 +7,9 @@ class TextStylesApp {
   );
 
   /// SIZE
+  static final TextStyle size12 = _base.copyWith(
+    fontSize: 12,
+  );
   static final TextStyle size14 = _base.copyWith(
     fontSize: 14,
   );
@@ -54,31 +56,6 @@ class TextStylesApp {
   );
   static final TextStyle size32WeightBold = size32.copyWith(
     fontWeight: FontWeight.bold,
-  );
-
-  /// COLOR
-  static final TextStyle size14ColorInactiveBlack = size14.copyWith(
-    color: ColorsApp.inactiveBlack,
-  );
-  static final TextStyle size14ColorSecondary = size14.copyWith(
-    color: ColorsApp.secondary,
-  );
-  static final TextStyle size14ColorSecondary2 = size14.copyWith(
-    color: ColorsApp.secondary2,
-  );
-  static final TextStyle size14ColorGreen = size14.copyWith(
-    color: ColorsApp.green,
-  );
-  static final TextStyle size14WeightBoldColorWhite = size14WeightBold.copyWith(
-    color: ColorsApp.white,
-  );
-  static final TextStyle size15Weight400ColorInactiveBlack =
-      size15Weight400.copyWith(
-    color: ColorsApp.inactiveBlack,
-  );
-  static final TextStyle size18Weight500ColorInactiveBlack =
-      size18Weight500.copyWith(
-    color: ColorsApp.inactiveBlack,
   );
 
   /// HEIGHT
