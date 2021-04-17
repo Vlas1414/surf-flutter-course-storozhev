@@ -16,13 +16,13 @@ class VisitingScreen extends StatefulWidget {
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  TabController? tabController;
+  late TabController tabController;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
-    tabController!.addListener(() {
+    tabController.addListener(() {
       setState(() {});
     });
   }
@@ -56,11 +56,11 @@ class _VisitingScreenState extends State<VisitingScreen>
 /// TODO: обработка нажатий по интдикатору
 class _CustomTabIndicator extends StatelessWidget {
   const _CustomTabIndicator({
+    required this.tabController,
     Key? key,
-    this.tabController,
   }) : super(key: key);
 
-  final TabController? tabController;
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class _CustomTabIndicator extends StatelessWidget {
           return Stack(
             children: [
               Positioned(
-                left: tabController?.index == 0 ? 0 : constraints.maxWidth / 2,
+                left: tabController.index == 0 ? 0 : constraints.maxWidth / 2,
                 child: Container(
                   width: constraints.maxWidth / 2,
                   height: constraints.maxHeight,
@@ -94,7 +94,7 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsApp.visitingTabTitleFuture,
-                        style: tabController?.index == 0
+                        style: tabController.index == 0
                             ? TextStylesApp.size16Weight700.copyWith(
                                 color: Theme.of(context)
                                     .textTheme
@@ -114,7 +114,7 @@ class _CustomTabIndicator extends StatelessWidget {
                     child: Center(
                       child: Text(
                         StringsApp.visitingTabTitlePast,
-                        style: tabController?.index == 1
+                        style: tabController.index == 1
                             ? TextStylesApp.size16Weight700.copyWith(
                                 color: Theme.of(context)
                                     .textTheme

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/themes.dart';
 import 'package:places/ui/screens/add_sight_screen.dart';
-import 'package:places/ui/screens/filters_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,11 +20,6 @@ class App extends StatelessWidget {
               title: 'Places',
               theme: themeModel.isDarkMode ? darkTheme : lightTheme,
               home: const AddSightScreen(),
-              //SettingsScreen(),
-              // const FiltersScreen(),
-              //const SightListScreen(),
-              //SightDetailsScreen(),
-              //VisitingScreen(),
             );
           },
         );
@@ -40,10 +34,8 @@ class ThemeModel extends ChangeNotifier {
   /// Выбрана ли темная тема
   bool get isDarkMode => _isDarkMode;
 
-  void changeMode({bool? newValue}) {
-    if (newValue != null) {
-      _isDarkMode = newValue;
-      notifyListeners();
-    }
+  void changeMode({required bool newValue}) {
+    _isDarkMode = newValue;
+    notifyListeners();
   }
 }
