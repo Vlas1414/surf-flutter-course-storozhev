@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:places/constants/assets_app.dart';
+import 'package:places/constants/colors_app.dart';
 import 'package:places/mocks.dart';
 import 'package:places/constants/strings_app.dart';
 import 'package:places/constants/text_styles_app.dart';
 import 'package:places/ui/components/sight_card.dart';
+import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
 import 'package:places/ui/utils/default_list_view.dart';
 
@@ -20,6 +24,8 @@ class SightListScreen extends StatelessWidget {
             )
             .toList(),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: const _AddSightButton(),
       bottomNavigationBar: const DefaultBottomNavigationBar(),
     );
   }
@@ -28,7 +34,7 @@ class SightListScreen extends StatelessWidget {
 /// AppBar для экрана списка интересных мест.
 /// title - заголовок
 class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _CustomAppBar(this.title);
+  const _CustomAppBar(this.title, {Key? key}) : super(key: key);
 
   final String title;
   static const double _prefferredHeight = 160;
@@ -51,4 +57,69 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size(double.infinity, _prefferredHeight);
+}
+
+/// Кнопка добавление нового места
+class _AddSightButton extends StatelessWidget {
+  const _AddSightButton({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    void onPressed() {
+      Navigator.push(
+        context,
+        CupertinoPageRoute<bool>(
+          builder: (context) => const AddSightScreen(),
+        ),
+      );
+    }
+
+    return Container(
+      width: 177,
+      height: 48,
+      alignment: Alignment.center,
+      clipBehavior: Clip.hardEdge,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(24)),
+        gradient: LinearGradient(
+          colors: [
+            ColorsApp.yellow01,
+            ColorsApp.green01,
+          ],
+          begin: FractionalOffset(-0.3, 0.0),
+          end: FractionalOffset(1.3, 0.0),
+        ),
+      ),
+      child: Material(
+        color: ColorsApp.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          child: SizedBox(
+            width: 177,
+            height: 48,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(
+                  image: AssetImage(
+                    AssetsApp.plusIcon,
+                  ),
+                  width: 25,
+                  height: 25,
+                ),
+                const SizedBox(
+                  width: 6,
+                ),
+                Text(
+                  StringsApp.addSightTitle.toUpperCase(),
+                  style: TextStylesApp.size14Weight700.copyWith(
+                    color: ColorsApp.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
