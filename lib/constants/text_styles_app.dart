@@ -33,6 +33,9 @@ class TextStylesApp {
   );
 
   /// WEIGHT
+  static final TextStyle size14Weight700 = size14.copyWith(
+    fontWeight: FontWeight.w700,
+  );
   static final TextStyle size14WeightBold = size14.copyWith(
     fontWeight: FontWeight.bold,
   );

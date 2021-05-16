@@ -4,6 +4,8 @@ class StringsApp {
   static const String cancel = 'Отмена';
   static const String save = 'Сохранить';
   static const String create = 'Создать';
+  static const String yes = 'Да';
+  static const String no = 'Нет';
 
   // SCREEN SIMPLE LIST
   static const String appMainTitle = 'Список\nинтересных мест';
@@ -63,4 +65,10 @@ class StringsApp {
   static const String addSightLon = 'Долгота';
   static const String addSightDesc = 'Описание';
   static const String addSightSetOnMap = 'Указать на карте';
+  static const String addSightExampleName = 'Эйфелева башня';
+  static const String addSightNotCorrectValue = 'Не корректное значение';
+  static const String addSightExampleLat = '48.858449';
+  static const String addSightExampleLon = '2.294521';
+  static const String addSightAreYouShureToLeave =
+      'Вы действительно хотите покинуть этот экран?';
 }

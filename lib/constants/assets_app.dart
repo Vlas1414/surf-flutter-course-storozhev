@@ -2,6 +2,7 @@
 class AssetsApp {
   static const String empty = 'assets/images/Empty.png';
   static const String clearIcon = 'assets/images/ClearIcon.png';
+  static const String plusIcon = 'assets/images/plusIcon.png';
 
   /// MENU
   static const String heartIcon = 'assets/images/HeartIcon.png';

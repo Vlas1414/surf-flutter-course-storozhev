@@ -13,29 +13,39 @@ import 'package:places/constants/text_styles_app.dart';
 class DefaultTextInput extends StatefulWidget {
   const DefaultTextInput({
     Key? key,
+    this.controller,
     this.maxLines = 1,
     this.maxLength,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     this.hintText = 'Введите текст...',
+    this.autovalidateMode,
+    this.validatorRegex,
+    this.validatorErrorMessage,
   }) : super(key: key);
 
+  final TextEditingController? controller;
   final int maxLines;
   final int? maxLength;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final String hintText;
+  final AutovalidateMode? autovalidateMode;
+  final String? validatorRegex;
+  final String? validatorErrorMessage;
 
   @override
   _DefaultTextInputState createState() => _DefaultTextInputState();
 }
 
 class _DefaultTextInputState extends State<DefaultTextInput> {
-  final controller = TextEditingController();
   final textFieldFocusNode = FocusNode();
+  late TextEditingController controller;
 
   @override
   void initState() {
+    controller = widget.controller ?? TextEditingController();
+
     textFieldFocusNode.addListener(() {
       setState(() {});
     });
@@ -53,25 +63,30 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
       ),
     );
 
-    final clearButton = CupertinoButton(
-      padding: const EdgeInsets.all(0),
-      onPressed: controller.clear,
-      child: Image.asset(
-        AssetsApp.clearIcon,
-        height: 23,
-        width: 23,
-        color: Theme.of(context).textTheme.bodyText1!.color,
+    final clearButton = SizedBox(
+      height: 40,
+      child: CupertinoButton(
+        padding: const EdgeInsets.all(0),
+        onPressed: controller.clear,
+        child: Image.asset(
+          AssetsApp.clearIcon,
+          height: 23,
+          width: 23,
+          color: Theme.of(context).textTheme.bodyText1!.color,
+        ),
       ),
     );
 
     final input = TextFormField(
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: widget.autovalidateMode,
       validator: (value) {
-        if (value != null) {
-          final RegExp regex = RegExp(r'\d{2}\.\d*');
+        if (value != null &&
+            widget.validatorRegex != null &&
+            widget.validatorErrorMessage != null) {
+          final RegExp regex = RegExp(widget.validatorRegex!);
           final bool isValid = regex.hasMatch(value);
           if (!isValid) {
-            return 'Ошибка валидации';
+            return widget.validatorErrorMessage;
           }
         }
 
@@ -97,6 +112,7 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
         isDense: true,
         border: inputBorder,
         enabledBorder: inputBorder,
+        suffixIconConstraints: const BoxConstraints(),
         suffixIcon: textFieldFocusNode.hasFocus && widget.maxLines == 1
             ? clearButton
             : null,
@@ -113,12 +129,6 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
         ),
       ),
     );
-    if (widget.maxLines == 1) {
-      return SizedBox(
-        height: 40,
-        child: input,
-      );
-    }
     return input;
   }
 }

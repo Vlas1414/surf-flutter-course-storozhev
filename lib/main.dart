@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/themes.dart';
-import 'package:places/ui/screens/add_sight_screen.dart';
+import 'package:places/ui/screens/sight_list_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
             return MaterialApp(
               title: 'Places',
               theme: themeModel.isDarkMode ? darkTheme : lightTheme,
-              home: const AddSightScreen(),
+              home: const SightListScreen(),
             );
           },
         );
