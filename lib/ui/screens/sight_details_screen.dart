@@ -4,14 +4,17 @@ import 'package:places/constants/assets_app.dart';
 import 'package:places/constants/colors_app.dart';
 import 'package:places/constants/strings_app.dart';
 import 'package:places/constants/text_styles_app.dart';
+import 'package:places/mocks.dart';
 import 'package:places/ui/utils/default_accept_button.dart';
 import 'package:places/ui/utils/image_loading.dart';
 
 /// Экран подробной информации о посещаемом месте
 class SightDetailsScreen extends StatelessWidget {
-  const SightDetailsScreen({Key? key}) : super(key: key);
+  const SightDetailsScreen({required this.sightId, Key? key}) : super(key: key);
+  final int sightId;
   @override
   Widget build(BuildContext context) {
+    final sight = mocksSights.where((element) => element.id == sightId).first;
     return Scaffold(
       body: Column(
         children: [
@@ -22,11 +25,11 @@ class SightDetailsScreen extends StatelessWidget {
               color: Colors.grey,
               child: Stack(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: double.infinity,
                     height: double.infinity,
                     child: ImageLoading(
-                      'https://dv-gazeta.info/wp-content/uploads/2018/02/17.jpg',
+                      sight.url,
                     ),
                   ),
                   Container(
@@ -41,8 +44,7 @@ class SightDetailsScreen extends StatelessWidget {
                         ),
                         backgroundColor: Theme.of(context).backgroundColor,
                       ),
-                      // ignore: avoid_print
-                      onPressed: () => print('Tap back'),
+                      onPressed: () => Navigator.of(context).pop(),
                       child: Image.asset(
                         AssetsApp.arrowIcon,
                         width: 24,
@@ -64,7 +66,7 @@ class SightDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    StringsApp.detailsTitle,
+                    sight.name,
                     style: TextStylesApp.size24WeightBold.copyWith(
                       color: Theme.of(context).textTheme.headline1!.color,
                     ),
@@ -73,7 +75,7 @@ class SightDetailsScreen extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        StringsApp.detailsTypeName.toLowerCase(),
+                        sight.type.text.toLowerCase(),
                         style: TextStylesApp.size14WeightBold.copyWith(
                           color: Theme.of(context).textTheme.headline2!.color,
                         ),
@@ -89,7 +91,7 @@ class SightDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    StringsApp.detailsDescription,
+                    sight.details,
                     style: TextStylesApp.size14Height1_4.copyWith(
                         color: Theme.of(context).textTheme.headline1!.color),
                   ),

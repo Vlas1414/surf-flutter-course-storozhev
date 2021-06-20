@@ -1,5 +1,6 @@
 class Sight {
   Sight({
+    required this.id,
     required this.name,
     required this.lat,
     required this.lon,
@@ -7,6 +8,7 @@ class Sight {
     required this.details,
     required this.type,
   });
+  final int id;
   final String name;
   final double lat;
   final double lon;

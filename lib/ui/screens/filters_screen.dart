@@ -43,6 +43,9 @@ class _Content extends StatelessWidget {
           height: 24,
           color: Theme.of(context).textTheme.headline1!.color,
         ),
+        leadingOnPressed: () {
+          Navigator.pop(context);
+        },
         action: Text(
           StringsApp.filterClear,
           style: TextStylesApp.size18.copyWith(

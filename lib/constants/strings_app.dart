@@ -1,9 +1,17 @@
 /// Строки приложения places
 class StringsApp {
   static const String repeat = 'Повторить';
+  static const String cancel = 'Отмена';
+  static const String save = 'Сохранить';
+  static const String create = 'Создать';
+  static const String yes = 'Да';
+  static const String no = 'Нет';
+  static const String search = 'Поиск';
 
   // SCREEN SIMPLE LIST
-  static const String appMainTitle = 'Список\nинтересных мест';
+  static const String appMainTitle = 'Список интересных мест';
+  static const String appMainTitleFirst = 'Список';
+  static const String appMainTitleSecond = 'интересных мест';
   static const String simpleListEmptyText =
       'Извените, нам не удалось найти интересных мест в близи от Вас.';
 
@@ -50,4 +58,27 @@ class StringsApp {
   static const String settingsTitle = 'Настройки';
   static const String settingsDarkThemeName = 'Тёмная тема';
   static const String settingsWhatchTutorial = 'Смотреть туториал';
+
+  /// SCREEN ADD SIGHT
+  static const String addSightTitle = 'Новое место';
+  static const String addSightCategory = 'Категория';
+  static const String addSightCategoryNotSelected = 'Не выбрано';
+  static const String addSightName = 'Название';
+  static const String addSightLat = 'Широта';
+  static const String addSightLon = 'Долгота';
+  static const String addSightDesc = 'Описание';
+  static const String addSightSetOnMap = 'Указать на карте';
+  static const String addSightExampleName = 'Эйфелева башня';
+  static const String addSightNotCorrectValue = 'Не корректное значение';
+  static const String addSightExampleLat = '48.858449';
+  static const String addSightExampleLon = '2.294521';
+  static const String addSightAreYouShureToLeave =
+      'Вы действительно хотите покинуть этот экран?';
+
+  /// SCREEN SEARCH SIGHT
+  static const String searchSightNothingFinded = 'Ничего не найдено';
+  static const String searchSightTryToChangeParamsOfSearching =
+      'Попробуйте изменить параметры поиска';
+  static const String searchSightYouSearched = 'Вы искали';
+  static const String searchSightClearHistory = 'Очистить историю';
 }

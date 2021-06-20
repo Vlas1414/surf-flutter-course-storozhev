@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/colors_app.dart';
 import 'package:places/constants/text_styles_app.dart';
 
+/// Макет стандартной кнопки принятия для большенства экранов приложения
+/// text - текст кнопки
+/// icon - иконка кнопки
+/// onPressed - обратный вызов действия по нажатию на кнопку
 class DefaultAcceptButton extends StatelessWidget {
   const DefaultAcceptButton({
     this.text,
     this.icon,
+    this.onPressed,
     Key? key,
   })  : assert(text != null || icon != null),
         super(key: key);
 
   final String? text;
   final String? icon;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,7 @@ class DefaultAcceptButton extends StatelessWidget {
 
     return TextButton(
       // ignore: avoid_print
-      onPressed: () => print('Tap big green button'),
+      onPressed: onPressed ?? () => print('Tap big green button'),
       style: TextButton.styleFrom(
         primary: Theme.of(context).textTheme.headline1!.color,
         minimumSize: const Size.fromHeight(55),
