@@ -7,7 +7,7 @@ import 'package:places/constants/colors_app.dart';
 class ImageLoading extends StatelessWidget {
   const ImageLoading(this.url, {Key? key}) : super(key: key);
 
-  final String url;
+  final String? url;
 
   @override
   Widget build(BuildContext context) {
@@ -22,30 +22,31 @@ class ImageLoading extends StatelessWidget {
             height: 100,
           ),
         ),
-        SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Image.network(
-            url,
-            fit: BoxFit.cover,
-            loadingBuilder: (
-              context,
-              child,
-              loadingProgress,
-            ) {
-              if (loadingProgress == null) {
-                return child;
-              }
-              return Container(
-                alignment: Alignment.bottomCenter,
-                child: LinearProgressIndicator(
-                  value: loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!,
-                ),
-              );
-            },
+        if (url != null)
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Image.network(
+              url!,
+              fit: BoxFit.cover,
+              loadingBuilder: (
+                context,
+                child,
+                loadingProgress,
+              ) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Container(
+                  alignment: Alignment.bottomCenter,
+                  child: LinearProgressIndicator(
+                    value: loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!,
+                  ),
+                );
+              },
+            ),
           ),
-        ),
       ],
     );
   }

@@ -4,6 +4,7 @@ import 'package:places/domain/sight.dart';
 
 final List<Sight> mocksSights = [
   Sight(
+    id: 1,
     name: 'Технический музей "Машины времени"',
     details:
         'Классический музей с автомобилями, мотоциклами и велосипедами советской эпохи, а также необычным кафе.',
@@ -13,6 +14,7 @@ final List<Sight> mocksSights = [
     lon: 35.0614178,
   ),
   Sight(
+    id: 2,
     name: 'Днепропетровский национальный исторический музей',
     details:
         'археологические находки, произведения искусства, фарфор, мебель и оружие.',
@@ -23,6 +25,7 @@ final List<Sight> mocksSights = [
     lon: 35.0581895,
   ),
   Sight(
+    id: 3,
     name: 'Шар желаний',
     details: 'Стеклянный шар на набережной.',
     type: mocksTypeOfSight[2],

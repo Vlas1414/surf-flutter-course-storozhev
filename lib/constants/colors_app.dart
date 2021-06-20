@@ -12,7 +12,7 @@ class ColorsApp {
   static const Color main = Color.fromARGB(255, 37, 40, 73);
   static const Color secondary = Color.fromARGB(255, 59, 62, 91);
   static const Color secondary2 = Color.fromARGB(255, 124, 126, 146);
-  static const Color inactiveBlack = Color.fromARGB(70, 124, 126, 146);
+  static const Color inactiveBlack = Color.fromARGB(142, 124, 126, 146);
   static const Color background = Color.fromARGB(255, 245, 245, 245);
 
   static const Color dark = Color.fromARGB(255, 26, 26, 32);

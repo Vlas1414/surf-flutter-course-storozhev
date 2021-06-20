@@ -22,6 +22,13 @@ class DefaultTextInput extends StatefulWidget {
     this.autovalidateMode,
     this.validatorRegex,
     this.validatorErrorMessage,
+    this.fillColor,
+    this.border,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.readOnly = false,
+    this.onTap,
+    this.autofocus = false,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -33,6 +40,13 @@ class DefaultTextInput extends StatefulWidget {
   final AutovalidateMode? autovalidateMode;
   final String? validatorRegex;
   final String? validatorErrorMessage;
+  final Color? fillColor;
+  final InputBorder? border;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool readOnly;
+  final Function()? onTap;
+  final bool autofocus;
 
   @override
   _DefaultTextInputState createState() => _DefaultTextInputState();
@@ -54,20 +68,26 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
 
   @override
   Widget build(BuildContext context) {
-    final inputBorder = OutlineInputBorder(
-      borderSide: BorderSide(
-        color: ColorsApp.green.withOpacity(0.4),
-      ),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(8),
-      ),
-    );
+    final inputBorder = widget.border ??
+        OutlineInputBorder(
+          borderSide: BorderSide(
+            color: ColorsApp.green.withOpacity(0.4),
+          ),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(8),
+          ),
+        );
 
     final clearButton = SizedBox(
       height: 40,
       child: CupertinoButton(
         padding: const EdgeInsets.all(0),
-        onPressed: controller.clear,
+        onPressed: () {
+          if (controller.value.text.isEmpty) {
+            textFieldFocusNode.unfocus();
+          }
+          controller.clear();
+        },
         child: Image.asset(
           AssetsApp.clearIcon,
           height: 23,
@@ -77,7 +97,10 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
       ),
     );
 
-    final input = TextFormField(
+    return TextFormField(
+      autofocus: widget.autofocus,
+      onTap: widget.onTap,
+      readOnly: widget.readOnly,
       autovalidateMode: widget.autovalidateMode,
       validator: (value) {
         if (value != null &&
@@ -92,7 +115,7 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
 
         return null;
       },
-      focusNode: textFieldFocusNode,
+      focusNode: widget.readOnly ? null : textFieldFocusNode,
       controller: controller,
       onEditingComplete: textFieldFocusNode.nextFocus,
       textInputAction: widget.textInputAction,
@@ -108,19 +131,27 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
       ),
       decoration: InputDecoration(
         counterText: '',
+        filled: widget.fillColor != null,
+        fillColor: widget.fillColor,
         hintText: widget.hintText,
+        hintStyle: TextStylesApp.size16.copyWith(
+          color: ColorsApp.inactiveBlack,
+          height: 1.4,
+        ),
         isDense: true,
         border: inputBorder,
         enabledBorder: inputBorder,
-        suffixIconConstraints: const BoxConstraints(),
-        suffixIcon: textFieldFocusNode.hasFocus && widget.maxLines == 1
-            ? clearButton
-            : null,
         focusedBorder: inputBorder.copyWith(
           borderSide: inputBorder.borderSide.copyWith(
             width: 2,
           ),
         ),
+        prefixIcon: widget.prefixIcon,
+        prefixIconConstraints: const BoxConstraints(),
+        suffixIcon: textFieldFocusNode.hasFocus && widget.maxLines == 1
+            ? clearButton
+            : widget.suffixIcon,
+        suffixIconConstraints: const BoxConstraints(),
         contentPadding: EdgeInsets.only(
           left: 16,
           right: textFieldFocusNode.hasFocus && widget.maxLines == 1 ? 0 : 16,
@@ -129,6 +160,5 @@ class _DefaultTextInputState extends State<DefaultTextInput> {
         ),
       ),
     );
-    return input;
   }
 }

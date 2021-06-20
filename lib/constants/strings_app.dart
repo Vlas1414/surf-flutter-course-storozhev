@@ -6,9 +6,12 @@ class StringsApp {
   static const String create = 'Создать';
   static const String yes = 'Да';
   static const String no = 'Нет';
+  static const String search = 'Поиск';
 
   // SCREEN SIMPLE LIST
-  static const String appMainTitle = 'Список\nинтересных мест';
+  static const String appMainTitle = 'Список интересных мест';
+  static const String appMainTitleFirst = 'Список';
+  static const String appMainTitleSecond = 'интересных мест';
   static const String simpleListEmptyText =
       'Извените, нам не удалось найти интересных мест в близи от Вас.';
 
@@ -71,4 +74,11 @@ class StringsApp {
   static const String addSightExampleLon = '2.294521';
   static const String addSightAreYouShureToLeave =
       'Вы действительно хотите покинуть этот экран?';
+
+  /// SCREEN SEARCH SIGHT
+  static const String searchSightNothingFinded = 'Ничего не найдено';
+  static const String searchSightTryToChangeParamsOfSearching =
+      'Попробуйте изменить параметры поиска';
+  static const String searchSightYouSearched = 'Вы искали';
+  static const String searchSightClearHistory = 'Очистить историю';
 }

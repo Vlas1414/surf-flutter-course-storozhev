@@ -9,6 +9,7 @@ import 'package:places/ui/components/sight_card.dart';
 import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/utils/default_bottom_navigaion_bar.dart';
 import 'package:places/ui/utils/default_list_view.dart';
+import 'package:places/ui/utils/search_bar.dart';
 
 /// Экран списка интересных мест.
 class SightListScreen extends StatelessWidget {
@@ -16,7 +17,11 @@ class SightListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const _CustomAppBar(StringsApp.appMainTitle),
+      appBar: const _CustomAppBar(
+        StringsApp.appMainTitleFirst,
+        StringsApp.appMainTitleSecond,
+        SearchBar(),
+      ),
       body: DefaultListView.simpleList(
         mocksSights
             .map(
@@ -34,10 +39,18 @@ class SightListScreen extends StatelessWidget {
 /// AppBar для экрана списка интересных мест.
 /// title - заголовок
 class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _CustomAppBar(this.title, {Key? key}) : super(key: key);
+  const _CustomAppBar(this.titleFirstPart, this.titleSecondPart, this.bottom,
+      {Key? key})
+      : super(key: key);
 
-  final String title;
-  static const double _prefferredHeight = 160;
+  final String titleFirstPart;
+  final String titleSecondPart;
+  final Widget? bottom;
+
+  static const double _prefferredTitleHeight = 160;
+  static const double _prefferredBottomHeight = 82;
+  static const double _prefferredHeight =
+      _prefferredBottomHeight + _prefferredTitleHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +58,38 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       height: _prefferredHeight,
       padding: const EdgeInsets.only(bottom: 5, left: 16, right: 16),
       alignment: Alignment.bottomLeft,
-      child: Text(
-        title,
-        style: TextStylesApp.size32WeightBold.copyWith(
-          color: Theme.of(context).textTheme.bodyText1!.color,
-        ),
-        maxLines: 2,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              children: [
+                Text(
+                  '$titleFirstPart ',
+                  style: TextStylesApp.size32WeightBold.copyWith(
+                    color: Theme.of(context).textTheme.bodyText1!.color,
+                  ),
+                  maxLines: 2,
+                ),
+                Text(
+                  titleSecondPart,
+                  style: TextStylesApp.size32WeightBold.copyWith(
+                    color: Theme.of(context).textTheme.bodyText1!.color,
+                  ),
+                  softWrap: false,
+                  maxLines: 2,
+                ),
+              ],
+            ),
+          ),
+          if (bottom != null)
+            Container(
+              padding: const EdgeInsets.only(bottom: 6, top: 30),
+              height: _prefferredBottomHeight,
+              child: bottom,
+            ),
+        ],
       ),
     );
   }

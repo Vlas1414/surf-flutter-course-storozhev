@@ -275,6 +275,7 @@ class _AddSightModel extends ChangeNotifier {
         latController.value.text.isNotEmpty &&
         lonController.value.text.isNotEmpty) {
       final newSight = Sight(
+        id: mocksSights.length + 1,
         url: '',
         type: _selectedCategory!,
         name: nameController.value.text,

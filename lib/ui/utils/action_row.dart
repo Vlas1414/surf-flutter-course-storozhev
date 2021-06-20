@@ -8,6 +8,7 @@ class ActionRow extends StatelessWidget {
     this.color,
     this.action,
     this.onTap,
+    this.isShowBottomLine = true,
     Key? key,
   }) : super(key: key);
 
@@ -15,6 +16,7 @@ class ActionRow extends StatelessWidget {
   final Color? color;
   final Widget? action;
   final Function()? onTap;
+  final bool isShowBottomLine;
 
   @override
   Widget build(BuildContext context) {
@@ -23,29 +25,33 @@ class ActionRow extends StatelessWidget {
         InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: onTap,
-          child: SizedBox(
-            height: 45,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
               children: [
-                Text(
-                  text,
-                  style: TextStylesApp.size16.copyWith(
-                    color:
-                        color ?? Theme.of(context).textTheme.bodyText1!.color,
+                Expanded(
+                  child: Text(
+                    text,
+                    style: TextStylesApp.size16.copyWith(
+                      color:
+                          color ?? Theme.of(context).textTheme.bodyText1!.color,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 if (action != null) ...[
-                  const Spacer(),
                   action!,
                 ],
               ],
             ),
           ),
         ),
-        const Divider(
-          color: ColorsApp.inactiveBlack,
-          height: 9,
-        ),
+        if (isShowBottomLine)
+          const Divider(
+            color: ColorsApp.inactiveBlack,
+            height: 9,
+          ),
       ],
     );
   }
